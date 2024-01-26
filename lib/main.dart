@@ -6,6 +6,7 @@ import 'package:plant_disease/user/data/datasorce/user_remote_ds/user_remote_ds.
 import 'package:plant_disease/user/presentation/bloc/auth_bloc/authentication_bloc.dart';
 import 'package:plant_disease/user/presentation/bloc/user_data_bloc/user_data_bloc.dart';
 import 'package:plant_disease/user/presentation/pages/login_page.dart';
+import 'package:plant_disease/user/presentation/pages/sample.dart';
 
 import 'core/db_helper.dart';
 
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginPage()
+      home: Sample()
     );
   }
 }
