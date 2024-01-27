@@ -43,6 +43,7 @@ dependencies:
   flutter_svg: ^2.0.9
   circular_bottom_navigation: ^2.3.0
   cloud_firestore: ^4.13.2
+  animated_splash_screen: ^1.3.0
 
 dev_dependencies:
   flutter_test:

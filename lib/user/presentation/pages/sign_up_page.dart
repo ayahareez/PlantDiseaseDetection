@@ -31,7 +31,7 @@ class SignUpPage extends StatelessWidget {
                 children: [
                   Center(
                     child: Lottie.asset(
-                      'assets/images/login_signup.json',
+                      'assets/images/plant.json',
                       // Replace with the actual path to your Lottie JSON file
                       width: 250,
                       height: 250,
@@ -40,7 +40,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   const Text(
                     'Sign up',
-                    style: TextStyle(fontSize: 40.0, fontFamily: 'MyFont'),
+                    style: TextStyle(fontSize: 40.0,fontWeight: FontWeight.bold, fontFamily: 'MyFont'),
                   ),
                   const SizedBox(
                     height: 40.0,
@@ -50,6 +50,9 @@ class SignUpPage extends StatelessWidget {
                     decoration: const InputDecoration(
                       hintText: 'Name',
                       border: OutlineInputBorder(),
+                      prefixIcon: Icon(
+                        Icons.abc,
+                      ),
                     ),
                     validator: (text) {
                       if (text!.isEmpty) {
@@ -67,6 +70,9 @@ class SignUpPage extends StatelessWidget {
                     decoration: const InputDecoration(
                       hintText: 'Email',
                       border: OutlineInputBorder(),
+                      prefixIcon: Icon(
+                        Icons.email,
+                      ),
                     ),
                     validator: (text) {
                       if (text!.isEmpty) {
@@ -90,6 +96,9 @@ class SignUpPage extends StatelessWidget {
                     decoration: const InputDecoration(
                       hintText: 'Password',
                       border: OutlineInputBorder(),
+                      prefixIcon: Icon(
+                        Icons.lock,
+                      ),
                     ),
                     validator: (text) {
                       if (text!.isEmpty) {
@@ -110,7 +119,7 @@ class SignUpPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       gradient: LinearGradient(
-                        colors: [Color(0xffa07a52), Color(0xffd6bfa9)],
+                        colors: [ Color(0xff276E23),Color(0xff98C496)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),

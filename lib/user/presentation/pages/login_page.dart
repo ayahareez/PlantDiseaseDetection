@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:plant_disease/user/presentation/pages/sample.dart';
 import '../bloc/auth_bloc/authentication_bloc.dart';
 import 'sign_up_page.dart';
@@ -57,10 +58,12 @@ class _LoginPageState extends State<LoginPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Center(
-                          child: SvgPicture.asset(
-                            'assets/images/undraw_medicine_b-1-ol.svg', // Replace with the actual path to your SVG file
-                            width: 200.0, // Adjust the width as needed
-                            height: 200.0, // Adjust the height as needed
+                          child: Lottie.asset(
+                            'assets/images/Animation - 1706314168418.json',
+                            // Replace with the actual path to your Lottie JSON file
+                            width: 250,
+                            height: 250,
+                            // Other options...
                           ),
                         ),
                         const Text(
@@ -129,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             gradient: LinearGradient(
-                              colors: [Color(0xffa07a52), Color(0xffd6bfa9)],
+                              colors: [ Color(0xff276E23),Color(0xff98C496),],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
@@ -173,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
-                              'Dont have an acount ? ',
+                              'Don\'t have an acount ? ',
                               style:
                                   TextStyle(fontSize: 18, fontFamily: 'MyFont'),
                             ),
@@ -187,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                               child: const Text('Register now ',
                                   style: TextStyle(
                                       fontSize: 18,
-                                      color: Color(0xff8d6942),
+                                      color: Color(0xff276E23),
                                       fontFamily: 'MyFont')),
                             )
                           ],

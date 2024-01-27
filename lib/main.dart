@@ -7,6 +7,7 @@ import 'package:plant_disease/user/presentation/bloc/auth_bloc/authentication_bl
 import 'package:plant_disease/user/presentation/bloc/user_data_bloc/user_data_bloc.dart';
 import 'package:plant_disease/user/presentation/pages/login_page.dart';
 import 'package:plant_disease/user/presentation/pages/sample.dart';
+import 'package:plant_disease/user/presentation/pages/splash_page.dart';
 
 import 'core/db_helper.dart';
 
@@ -14,6 +15,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   print(Firebase.apps.first);
+  await AuthenticationImp().signOut() ;
   runApp(
     MultiBlocProvider(
       providers: [
@@ -52,7 +54,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Sample()
+      home: SplashScreen()
     );
   }
 }
