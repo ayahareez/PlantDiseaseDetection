@@ -1,4 +1,7 @@
+import 'dart:html';
+
 import 'package:dartz/dartz.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:plant_disease/features/predict_plant_disease/domain/entities/disease.dart';
 import 'package:plant_disease/features/predict_plant_disease/domain/repositories/disease_repository.dart';
 
@@ -8,7 +11,7 @@ class AddPhotoUC {
   final DiseaseRepository diseaseRepository;
 
   AddPhotoUC({required this.diseaseRepository});
-  // Either<Failure, Disease> call(Disease disease) {
-  //   return diseaseRepository.addPhotoToPredict();
-  // }
+  Future<Either<Failure, Disease>> call(File file, String plantName) {
+    return diseaseRepository.addPhotoToPredict(file, plantName);
+  }
 }
