@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:plant_disease/user/presentation/pages/sample.dart';
+import 'package:plant_disease/features/auth/presentation/pages/sample.dart';
 import '../../data/model/user.dart';
 import '../bloc/auth_bloc/authentication_bloc.dart';
 import '../bloc/user_data_bloc/user_data_bloc.dart';

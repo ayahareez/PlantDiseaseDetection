@@ -1,7 +1,9 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lottie/lottie.dart';
-import 'package:plant_disease/user/presentation/pages/login_page.dart';
+
+import 'login_page.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -25,4 +27,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-

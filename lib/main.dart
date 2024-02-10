@@ -1,15 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:plant_disease/user/data/datasorce/authentication_remote_ds/authentication.dart';
-import 'package:plant_disease/user/data/datasorce/user_remote_ds/user_remote_ds.dart';
-import 'package:plant_disease/user/presentation/bloc/auth_bloc/authentication_bloc.dart';
-import 'package:plant_disease/user/presentation/bloc/user_data_bloc/user_data_bloc.dart';
-import 'package:plant_disease/user/presentation/pages/login_page.dart';
-import 'package:plant_disease/user/presentation/pages/sample.dart';
-import 'package:plant_disease/user/presentation/pages/splash_page.dart';
-
 import 'core/db_helper.dart';
+import 'features/auth/data/datasorce/authentication_remote_ds/authentication.dart';
+import 'features/auth/data/datasorce/user_remote_ds/user_remote_ds.dart';
+import 'features/auth/presentation/bloc/auth_bloc/authentication_bloc.dart';
+import 'features/auth/presentation/bloc/user_data_bloc/user_data_bloc.dart';
+import 'features/auth/presentation/pages/splash_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

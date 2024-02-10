@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
-import 'package:plant_disease/user/presentation/pages/sample.dart';
+import 'package:plant_disease/features/auth/presentation/pages/sample.dart';
 import '../bloc/auth_bloc/authentication_bloc.dart';
 import 'sign_up_page.dart';
 
@@ -37,9 +37,8 @@ class _LoginPageState extends State<LoginPage> {
       body: BlocConsumer<AuthenticationBloc, AuthenticationState>(
         listener: (context, state) async {
           if (state is Authorized) {
-
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (_) =>  Sample()));
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (_) => Sample()));
           }
         },
         builder: (context, state) {
@@ -132,7 +131,10 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             gradient: LinearGradient(
-                              colors: [ Color(0xff276E23),Color(0xff98C496),],
+                              colors: [
+                                Color(0xff276E23),
+                                Color(0xff98C496),
+                              ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
@@ -154,7 +156,6 @@ class _LoginPageState extends State<LoginPage> {
                                           password: password.text,
                                         ),
                                       );
-
                                 } catch (e) {
                                   // Handle login errors, e.g., show a toast message
                                   Fluttertoast.showToast(
@@ -201,7 +202,9 @@ class _LoginPageState extends State<LoginPage> {
                         Center(
                           child: TextButton(
                             onPressed: () {
-                              context.read<AuthenticationBloc>().add(SignInAnonymouslyEvent());
+                              context
+                                  .read<AuthenticationBloc>()
+                                  .add(SignInAnonymouslyEvent());
                             },
                             child: const Text(' Login as a guest',
                                 style: TextStyle(
