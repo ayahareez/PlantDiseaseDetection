@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/pages/instruction_dialog.dart';
 
 class PlantPhotoPage extends StatefulWidget {
   const PlantPhotoPage({super.key});
@@ -33,7 +34,10 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                           borderRadius: BorderRadius.circular(8),
                           color: Colors.grey[200]),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showInstructionsDialog(context, setState);
+
+                        },
                         icon: Icon(
                           Icons.camera_alt,
                           size: 64,
@@ -48,7 +52,10 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                           borderRadius: BorderRadius.circular(8),
                           color: Colors.grey[200]),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showInstructionsDialog(context, setState);
+
+                        },
                         icon: Icon(
                           Icons.photo,
                           size: 64,
