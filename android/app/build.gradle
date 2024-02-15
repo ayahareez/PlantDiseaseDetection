@@ -59,10 +59,17 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    firebaseAppCheck {
+        appId = project(":app").property("flutter.appId")
+        apiKey = project(":app").property("flutter.firebase.config.api_key")
+    }
+
 }
 
 flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+
+}
