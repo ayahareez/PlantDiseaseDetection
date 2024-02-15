@@ -1,6 +1,5 @@
 import 'dart:convert';
-import 'dart:html';
-
+import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:plant_disease/features/predict_plant_disease/data/models/disease_model.dart';

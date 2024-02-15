@@ -66,12 +66,14 @@ Future<void> showInstructionsDialog(
                       });
                     }
                   },
-                  child: const Text(
-                    'Take Photo',
-                    style: TextStyle(
-                      color: Color(0xff2d232e),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
+                  child: const Center(
+                    child:  Text(
+                      'Take Photo',
+                      style: TextStyle(
+                        color: Color(0xff2d232e),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                      ),
                     ),
                   )),
             ],
