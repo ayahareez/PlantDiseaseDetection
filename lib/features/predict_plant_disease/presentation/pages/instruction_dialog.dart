@@ -47,34 +47,33 @@ Future<void> showInstructionsDialog(BuildContext context, void Function(void Fun
             ),
             actions: <Widget>[
               TextButton(
-                onPressed: () {
+                onPressed: () async {
+                  imageFile = await ImagePickerHelperImpl().pickImageFileFromGallery();
+                  print(imageFile);
+                  print('nada');
+                  if (imageFile != null) {
+                    print('inside');
+                    imageUrl = await StorageHelperImpl().uploadImageFromFile(imageFile!);
+                    print('nada');
+                  }
+                  // await ImagePickerHelperImpl().pickImageFileFromGallery().then(
+                  //         (value) => setState(() => imageFile = value));
+                  // if (imageFile != null) {
+                  //   StorageHelperImpl()
+                  //       .uploadImageFromFile(imageFile!);
+                  // }
+                  print(imageUrl);
+                  print('beeep');
                   Navigator.of(context).pop();
                 },
-                child: flag
-                    ? Image.file(
-                  File(imageFile!.path),
-                  fit: BoxFit.cover,
+                child: const Text(
+                  'Take Photo',
+                  style: TextStyle(
+                    color: Color(0xff2d232e),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                  ),
                 )
-                    : TextButton(
-                    onPressed: () async {
-                      imageFile = await ImagePickerHelperImpl().pickImageFileFromGallery();
-                      if (imageFile != null) {
-                        imageUrl = await StorageHelperImpl().uploadImageFromFile(imageFile!);
-                      }
-                      print(imageUrl);
-                      print('beeep');
-                      setStateInDialog(() {
-                        flag = true;
-                      });
-                    },
-                    child: const Text(
-                      'Take Photo',
-                      style: TextStyle(
-                        color: Color(0xff2d232e),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                      ),
-                    )),
               ),
             ],
           );
