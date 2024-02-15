@@ -14,9 +14,10 @@ part 'authentication_state.dart';
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final AuthenticationRemoteDS authenticationRemoteDS;
-  final UsersDBModel usersDBModel ;
+  final UsersDBModel usersDBModel;
 
-  AuthenticationBloc(this.authenticationRemoteDS, this.usersDBModel) : super(UnAuthorized()) {
+  AuthenticationBloc(this.authenticationRemoteDS, this.usersDBModel)
+      : super(UnAuthorized()) {
     on<AuthenticationEvent>((event, emit) async {
       try {
         if (event is SignInEvent) {
@@ -32,20 +33,18 @@ class AuthenticationBloc
           emit(LoadingState());
           await authenticationRemoteDS.signOut();
           emit(UnAuthorized());
-        }else if (event is CheckIfAuthEvent)
-          {
-            emit(LoadingState());
-             bool isAuth = authenticationRemoteDS.checkIfAuth();
-             emit(isAuth?Authorized():UnAuthorized());
-          }
-        else if  (event is SignInAnonymouslyEvent) {
+        } else if (event is CheckIfAuthEvent) {
+          emit(LoadingState());
+          bool isAuth = authenticationRemoteDS.checkIfAuth();
+          emit(isAuth ? Authorized() : UnAuthorized());
+        } else if (event is SignInAnonymouslyEvent) {
           emit(LoadingState());
           await authenticationRemoteDS.signInAnonymously();
           emit(Authorized());
         }
       } catch (error) {
         Fluttertoast.showToast(
-          msg: 'invalid data',
+          msg: 'Invalid Data,Please try again or Sign Up',
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
@@ -54,7 +53,6 @@ class AuthenticationBloc
           fontSize: 16.0,
         );
         emit(AuthError(error: error.toString()));
-
       }
     });
   }

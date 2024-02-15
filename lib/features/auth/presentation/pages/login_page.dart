@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:plant_disease/features/auth/presentation/pages/sample.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_photo_page.dart';
 import '../bloc/auth_bloc/authentication_bloc.dart';
 import 'sign_up_page.dart';
 
@@ -38,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
         listener: (context, state) async {
           if (state is Authorized) {
             Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => Sample()));
+                context, MaterialPageRoute(builder: (_) => PlantPhotoPage()));
           }
         },
         builder: (context, state) {
@@ -130,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                           width: double.infinity,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                               colors: [
                                 Color(0xff276E23),
                                 Color(0xff98C496),
@@ -144,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                               if (keyLogin.currentState!.validate()) {
                                 try {
                                   User? user =
-                                      await FirebaseAuth.instance.currentUser;
+                                      FirebaseAuth.instance.currentUser;
 
                                   if (user != null) {
                                     userId = user.uid;

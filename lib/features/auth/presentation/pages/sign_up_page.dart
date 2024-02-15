@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:plant_disease/features/auth/presentation/pages/sample.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_photo_page.dart';
 import '../../data/model/user.dart';
 import '../bloc/auth_bloc/authentication_bloc.dart';
 import '../bloc/user_data_bloc/user_data_bloc.dart';
@@ -40,7 +41,10 @@ class SignUpPage extends StatelessWidget {
                   ),
                   const Text(
                     'Sign up',
-                    style: TextStyle(fontSize: 40.0,fontWeight: FontWeight.bold, fontFamily: 'MyFont'),
+                    style: TextStyle(
+                        fontSize: 40.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'MyFont'),
                   ),
                   const SizedBox(
                     height: 40.0,
@@ -51,7 +55,7 @@ class SignUpPage extends StatelessWidget {
                       hintText: 'Name',
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(
-                        Icons.abc,
+                        Icons.person,
                       ),
                     ),
                     validator: (text) {
@@ -119,7 +123,7 @@ class SignUpPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       gradient: LinearGradient(
-                        colors: [ Color(0xff276E23),Color(0xff98C496)],
+                        colors: [Color(0xff276E23), Color(0xff98C496)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
@@ -128,21 +132,22 @@ class SignUpPage extends StatelessWidget {
                       onPressed: () async {
                         if (GlobalKeyForm.currentState!.validate()) {
                           UserModel userModel =
-                          UserModel(name: name.text, id:  '');
+                              UserModel(name: name.text, id: '');
                           context.read<AuthenticationBloc>().add(SignUpEvent(
-                              email: email.text, password: password.text , userModel));
+                              email: email.text,
+                              password: password.text,
+                              userModel));
 
-                         // User? user = await FirebaseAuth.instance.currentUser;
+                          // User? user = await FirebaseAuth.instance.currentUser;
 
-
-                            context
-                                .read<UserDataBloc>()
-                                .add(SetUserEvent(userModel: userModel));
+                          context
+                              .read<UserDataBloc>()
+                              .add(SetUserEvent(userModel: userModel));
 
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Sample()));
+                                  builder: (context) => PlantPhotoPage()));
                         }
                       },
                       child: const Text(

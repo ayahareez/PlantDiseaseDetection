@@ -12,7 +12,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   print(Firebase.apps.first);
-  await AuthenticationImp().signOut();
+  //await AuthenticationImp().signOut();
   runApp(
     MultiBlocProvider(
       providers: [
