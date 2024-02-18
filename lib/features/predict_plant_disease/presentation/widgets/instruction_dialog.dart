@@ -70,7 +70,7 @@ Future<void> showInstructionsDialog(BuildContext context,
                           image: imageFile!,
                           id: 0);
                       context.read<DiseaseBloc>().add(AddPhotoEvent(
-                          file: plantModel.image,
+                          imageUrl: 'imageUrl',
                           plantName: plantModel.plantName));
                       Navigator.of(context).pop();
                       setStateInDialog(() {

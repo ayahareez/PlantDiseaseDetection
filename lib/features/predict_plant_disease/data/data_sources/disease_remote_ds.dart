@@ -9,7 +9,7 @@ import 'package:plant_disease/features/predict_plant_disease/domain/entities/pla
 import '../../../../core/errors/exceptions.dart';
 
 abstract class DiseaseRemoteDs {
-  Future<Disease> addPhoto(File file, String plantName);
+  Future<Disease> addPhoto(String imageUrl, String plantName);
 }
 
 const BASE_URL = "http://localhost:8000/predict?name=";
@@ -19,9 +19,9 @@ class DiseaseRemoteDsImpl implements DiseaseRemoteDs {
 
   DiseaseRemoteDsImpl({required this.client});
   @override
-  Future<Disease> addPhoto(File file, String plantName) async {
+  Future<Disease> addPhoto(String imageUrl, String plantName) async {
     final response =
-        await client.post(Uri.parse(BASE_URL + "$plantName"), body: file);
+        await client.post(Uri.parse(BASE_URL + "$plantName"), body: imageUrl);
     if (response.statusCode > 199 && response.statusCode < 300) {
       Map<String, dynamic> decodedJson = jsonDecode(response.body);
       DiseaseModel diseaseModel = DiseaseModel.fromMap(decodedJson);

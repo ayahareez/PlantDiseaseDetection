@@ -17,10 +17,10 @@ class DiseaseRepositoryImpl implements DiseaseRepository {
       {required this.networkInfo, required this.diseaseRemoteDs});
   @override
   Future<Either<Failure, Disease>> addPhotoToPredict(
-      File file, String plantName) async {
+      String imageUrl, String plantName) async {
     if (await networkInfo.isConnected) {
       try {
-        final Disease disease = await diseaseRemoteDs.addPhoto(file, plantName);
+        final Disease disease = await diseaseRemoteDs.addPhoto(imageUrl, plantName);
         return Right(disease);
       } on ServerException {
         return Left(ServerFailure());

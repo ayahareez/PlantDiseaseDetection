@@ -22,7 +22,7 @@ class DiseaseBloc extends Bloc<DiseaseEvent, DiseaseState> {
         emit(LoadingDiseaseState());
 
         final failureOrDoneMessage =
-            await addPhotoUC(event.file, event.plantName);
+            await addPhotoUC(event.imageUrl, event.plantName);
 
         emit(
           _eitherDoneMessageOrErrorState(failureOrDoneMessage),

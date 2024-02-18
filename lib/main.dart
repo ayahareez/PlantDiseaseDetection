@@ -1,3 +1,4 @@
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +14,7 @@ import 'injection_container.dart' as di;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await FirebaseAppCheck.instance.activate();
   await di.init();
   print(Firebase.apps.first);
   // await AuthenticationImp().signOut();
@@ -26,7 +28,6 @@ Future<void> main() async {
             create: (context) =>
                 UserDataBloc(UserDBModelImp(dbHelper: RemoteDBHelperImp()))),
         BlocProvider(create: (_) => di.sl<DiseaseBloc>()),
-
       ],
       child: MyApp(),
     ),

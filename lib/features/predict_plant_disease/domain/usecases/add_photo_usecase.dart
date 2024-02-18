@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
@@ -12,7 +11,7 @@ class AddPhotoUC {
   final DiseaseRepository diseaseRepository;
 
   AddPhotoUC({required this.diseaseRepository});
-  Future<Either<Failure, Disease>> call(File file, String plantName) {
-    return diseaseRepository.addPhotoToPredict(file, plantName);
+  Future<Either<Failure, Disease>> call(String imageUrl, String plantName) {
+    return diseaseRepository.addPhotoToPredict(imageUrl, plantName);
   }
 }

@@ -53,6 +53,7 @@ dependencies:
   image_picker:
   firebase_storage:
   images_picker:
+  firebase_app_check:
 
 
 dev_dependencies:
