@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:plant_disease/features/auth/presentation/pages/sample.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_photo_page.dart';
-import '../../data/model/user.dart';
+import '../../data/model/user_model.dart';
 import '../bloc/auth_bloc/authentication_bloc.dart';
 import '../bloc/user_data_bloc/user_data_bloc.dart';
 

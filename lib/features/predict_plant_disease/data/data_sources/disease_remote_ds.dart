@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:plant_disease/features/predict_plant_disease/data/models/disease_model.dart';
 import 'package:plant_disease/features/predict_plant_disease/domain/entities/disease.dart';
+import 'package:plant_disease/features/predict_plant_disease/domain/entities/plant.dart';
 
 import '../../../../core/errors/exceptions.dart';
 

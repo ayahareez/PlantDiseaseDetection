@@ -9,19 +9,20 @@ import 'package:plant_disease/features/predict_plant_disease/domain/entities/dis
 import '../../../../core/errors/failures.dart';
 import '../../../../core/strings/failurs.dart';
 import '../../../../core/strings/messages.dart';
-import '../../domain/use_cases/add_photo_usecase.dart';
+import '../../domain/usecases/add_photo_usecase.dart';
 
 part 'disease_event.dart';
 part 'disease_state.dart';
 
 class DiseaseBloc extends Bloc<DiseaseEvent, DiseaseState> {
-  final AddPhotoUC addPhotoUC ;
+  final AddPhotoUC addPhotoUC;
   DiseaseBloc({required this.addPhotoUC}) : super(DiseaseInitial()) {
     on<DiseaseEvent>((event, emit) async {
       if (event is AddPhotoEvent) {
         emit(LoadingDiseaseState());
 
-        final failureOrDoneMessage = await addPhotoUC(event.file , event.plantName);
+        final failureOrDoneMessage =
+            await addPhotoUC(event.file, event.plantName);
 
         emit(
           _eitherDoneMessageOrErrorState(
@@ -35,10 +36,10 @@ class DiseaseBloc extends Bloc<DiseaseEvent, DiseaseState> {
 DiseaseState _eitherDoneMessageOrErrorState(
     Either<Failure, Disease> either, String message) {
   return either.fold(
-        (failure) => ErrorDiseaseState(
+    (failure) => ErrorDiseaseState(
       message: _mapFailureToMessage(failure),
     ),
-        (_) => MessageDiseaseState(message: message),
+    (_) => MessageDiseaseState(message: message),
   );
 }
 

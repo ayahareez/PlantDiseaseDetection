@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../../../core/db_helper.dart';
-import '../../model/user.dart';
+import '../../model/user_model.dart';
 
 abstract class UsersDBModel {
   ///add user data to [FireStore]

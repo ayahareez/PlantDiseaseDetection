@@ -1,14 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
-class UserModel {
-  final String name ,id; // Make id nullable
+import '../../domain/entities/user.dart';
 
-  UserModel({required this.name, required this.id}); // Make id optional
+class UserModel extends User {
+  const UserModel({required super.name, required super.id});
 
   Map<String, dynamic> toMap() => {
-    'name': name,
-  };
+        'name': name,
+      };
 
   factory UserModel.fromDoc(QueryDocumentSnapshot<Map<String, dynamic>> doc) {
     return UserModel(
