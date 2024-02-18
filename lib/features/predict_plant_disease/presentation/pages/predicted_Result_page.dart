@@ -16,12 +16,12 @@ class PredictedResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('The Predicted Result'),
+        title: const Text('The Predicted Result'),
       ),
       body: BlocBuilder<DiseaseBloc, DiseaseState>(
         builder: (context, state) {
           if (state is LoadingDiseaseState) {
-            return LoadingWidget();
+            return const LoadingWidget();
           }
           if (state is ErrorDiseaseState) {
             return MessageDisplayWidget(
@@ -38,7 +38,7 @@ class PredictedResultPage extends StatelessWidget {
               ],
             );
           }
-          return LoadingWidget();
+          return const LoadingWidget();
         },
       ),
     );
