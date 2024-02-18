@@ -1,12 +1,17 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plant_disease/features/predict_plant_disease/data/models/plant_model.dart';
+import 'package:plant_disease/features/predict_plant_disease/domain/entities/disease.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/pages/predicted_Result_page.dart';
 
 import '../../../../core/image_picker_helper.dart';
 import '../../../../core/storage_helper.dart';
+import '../bloc/disease_bloc.dart';
 
-Future<void> showInstructionsDialog(
-    BuildContext context, void Function(void Function()) setState) async {
+Future<void> showInstructionsDialog(BuildContext context,
+    void Function(void Function()) setState, String selectedPlant) async {
   File? imageFile;
   String? imageUrl;
   bool flag = false;
@@ -60,14 +65,26 @@ Future<void> showInstructionsDialog(
                     if (imageFile != null) {
                       imageUrl = await StorageHelperImpl()
                           .uploadImageFromFile(imageFile!);
+                      PlantModel plantModel = PlantModel(
+                          plantName: selectedPlant.toLowerCase(),
+                          image: imageFile!,
+                          id: 0);
+                      context.read<DiseaseBloc>().add(AddPhotoEvent(
+                          file: plantModel.image,
+                          plantName: plantModel.plantName));
                       Navigator.of(context).pop();
                       setStateInDialog(() {
                         flag = true;
                       });
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  PredictedResultPage(plantModel: plantModel)));
                     }
                   },
                   child: const Center(
-                    child:  Text(
+                    child: Text(
                       'Take Photo',
                       style: TextStyle(
                         color: Color(0xff2d232e),

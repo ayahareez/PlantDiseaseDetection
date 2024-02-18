@@ -25,16 +25,14 @@ class DiseaseBloc extends Bloc<DiseaseEvent, DiseaseState> {
             await addPhotoUC(event.file, event.plantName);
 
         emit(
-          _eitherDoneMessageOrErrorState(
-              failureOrDoneMessage),
+          _eitherDoneMessageOrErrorState(failureOrDoneMessage),
         );
       }
     });
   }
 }
 
-DiseaseState _eitherDoneMessageOrErrorState(
-    Either<Failure, Disease> either) {
+DiseaseState _eitherDoneMessageOrErrorState(Either<Failure, Disease> either) {
   return either.fold(
     (failure) => ErrorDiseaseState(
       message: _mapFailureToMessage(failure),
