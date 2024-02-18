@@ -26,7 +26,7 @@ class DiseaseBloc extends Bloc<DiseaseEvent, DiseaseState> {
 
         emit(
           _eitherDoneMessageOrErrorState(
-              failureOrDoneMessage, ADD_SUCCESS_MESSAGE),
+              failureOrDoneMessage),
         );
       }
     });
@@ -34,12 +34,12 @@ class DiseaseBloc extends Bloc<DiseaseEvent, DiseaseState> {
 }
 
 DiseaseState _eitherDoneMessageOrErrorState(
-    Either<Failure, Disease> either, String message) {
+    Either<Failure, Disease> either) {
   return either.fold(
     (failure) => ErrorDiseaseState(
       message: _mapFailureToMessage(failure),
     ),
-    (_) => MessageDiseaseState(message: message),
+    (disease) => LoadedDiseaseState(disease: disease),
   );
 }
 
