@@ -8,7 +8,6 @@ import 'package:plant_disease/features/predict_plant_disease/domain/entities/dis
 
 import '../../../../core/errors/failures.dart';
 import '../../../../core/strings/failurs.dart';
-import '../../../../core/strings/messages.dart';
 import '../../domain/usecases/add_photo_usecase.dart';
 
 part 'disease_event.dart';
@@ -20,9 +19,10 @@ class DiseaseBloc extends Bloc<DiseaseEvent, DiseaseState> {
     on<DiseaseEvent>((event, emit) async {
       if (event is AddPhotoEvent) {
         emit(LoadingDiseaseState());
-
+        print('from bloc after loading ');
         final failureOrDoneMessage =
             await addPhotoUC(event.imageUrl, event.plantName);
+        print('from bloc after loading ');
 
         emit(
           _eitherDoneMessageOrErrorState(failureOrDoneMessage),

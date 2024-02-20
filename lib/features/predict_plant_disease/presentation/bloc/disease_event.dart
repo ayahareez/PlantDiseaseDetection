@@ -4,7 +4,7 @@ abstract class DiseaseEvent extends Equatable {
   const DiseaseEvent();
 }
 class AddPhotoEvent extends DiseaseEvent {
-  final String imageUrl;
+  final File imageUrl;
   final String plantName ;
 
   AddPhotoEvent({required this.imageUrl, required this.plantName});

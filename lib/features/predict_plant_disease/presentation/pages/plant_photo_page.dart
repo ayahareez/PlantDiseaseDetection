@@ -42,7 +42,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                   Column(
                     children: List.generate(
                       plantNames.length,
-                      (index) {
+                          (index) {
                         final plantType = plantNames[index];
                         return RadioListTile<String>(
                           title: Text(plantType),

@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class Disease extends Equatable {
   final String className, plantName;
-  final int confidence;
+  final double confidence;
 
   const Disease(
       {required this.className,

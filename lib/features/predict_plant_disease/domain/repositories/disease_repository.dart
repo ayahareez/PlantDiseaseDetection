@@ -7,5 +7,5 @@ import '../../../../core/errors/failures.dart';
 
 abstract class DiseaseRepository {
   Future<Either<Failure, Disease>> addPhotoToPredict(
-      String imageUrl, String plantName);
+      File imageUrl, String plantName);
 }

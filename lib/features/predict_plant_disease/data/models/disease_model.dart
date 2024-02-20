@@ -8,8 +8,8 @@ class DiseaseModel extends Disease {
   factory DiseaseModel.fromMap(Map<String, dynamic> map) {
     return DiseaseModel(
         confidence: map['confidence'],
-        plantName: map['plantName'],
-        className: map['className']);
+        plantName: map['plant_name'],
+        className: map['class']);
   }
 
   Map<String, dynamic> toMap() {

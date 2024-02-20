@@ -61,16 +61,16 @@ Future<void> showInstructionsDialog(BuildContext context,
               TextButton(
                   onPressed: () async {
                     imageFile =
-                        await ImagePickerHelperImpl().pickImageFileFromCamera();
+                    await ImagePickerHelperImpl().pickImageFileFromCamera();
                     if (imageFile != null) {
-                      imageUrl = await StorageHelperImpl()
-                          .uploadImageFromFile(imageFile!);
+                      // imageUrl = await StorageHelperImpl()
+                      //     .uploadImageFromFile(imageFile!);
                       PlantModel plantModel = PlantModel(
                           plantName: selectedPlant.toLowerCase(),
                           image: imageFile!,
                           id: 0);
                       context.read<DiseaseBloc>().add(AddPhotoEvent(
-                          imageUrl: 'imageUrl',
+                          imageUrl: imageFile!,
                           plantName: plantModel.plantName));
                       Navigator.of(context).pop();
                       setStateInDialog(() {

@@ -11,7 +11,7 @@ class AddPhotoUC {
   final DiseaseRepository diseaseRepository;
 
   AddPhotoUC({required this.diseaseRepository});
-  Future<Either<Failure, Disease>> call(String imageUrl, String plantName) {
+  Future<Either<Failure, Disease>> call(File imageUrl, String plantName) {
     return diseaseRepository.addPhotoToPredict(imageUrl, plantName);
   }
 }
