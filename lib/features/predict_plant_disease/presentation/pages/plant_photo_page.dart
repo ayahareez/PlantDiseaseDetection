@@ -198,7 +198,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                   child: IconButton(
                     onPressed: () {
                       showInstructionsDialog(
-                          context, setState, selectedPlant);
+                          context, setState, selectedPlant , true);
                     },
                     icon: Icon(
                       Icons.camera_alt,
@@ -218,7 +218,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                   child: IconButton(
                     onPressed: () {
                       showInstructionsDialog(
-                          context, setState, selectedPlant);
+                          context, setState, selectedPlant,false);
                     },
                     icon: Icon(
                       Icons.photo,

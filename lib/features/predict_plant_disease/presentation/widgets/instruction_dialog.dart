@@ -11,7 +11,7 @@ import '../../../../core/storage_helper.dart';
 import '../bloc/disease_bloc.dart';
 
 Future<void> showInstructionsDialog(BuildContext context,
-    void Function(void Function()) setState, String selectedPlant) async {
+    void Function(void Function()) setState, String selectedPlant ,bool flag) async {
   File? imageFile;
   String? imageUrl;
   bool flag = false;
@@ -60,8 +60,17 @@ Future<void> showInstructionsDialog(BuildContext context,
             actions: <Widget>[
               TextButton(
                   onPressed: () async {
-                    imageFile =
-                    await ImagePickerHelperImpl().pickImageFileFromCamera();
+                    if (flag == true)
+                      {
+                        imageFile =
+                        await ImagePickerHelperImpl().pickImageFileFromCamera();
+                      }
+                    else
+                      {
+                        imageFile =
+                        await ImagePickerHelperImpl().pickImageFileFromGallery();
+                      }
+
                     if (imageFile != null) {
                       // imageUrl = await StorageHelperImpl()
                       //     .uploadImageFromFile(imageFile!);
