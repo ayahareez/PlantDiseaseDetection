@@ -7,14 +7,14 @@ import 'package:plant_disease/features/predict_plant_disease/domain/entities/dis
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/predicted_Result_page.dart';
 
 import '../../../../core/image_picker_helper.dart';
-import '../../../../core/storage_helper.dart';
+
 import '../bloc/disease_bloc.dart';
 
 Future<void> showInstructionsDialog(BuildContext context,
     void Function(void Function()) setState, String selectedPlant ,bool flag) async {
   File? imageFile;
   String? imageUrl;
-  bool flag = false;
+
 
   return showDialog<void>(
     context: context,
