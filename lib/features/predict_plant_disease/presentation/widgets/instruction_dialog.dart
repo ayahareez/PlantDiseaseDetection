@@ -65,7 +65,7 @@ Future<void> showInstructionsDialog(BuildContext context,
                         imageFile =
                         await ImagePickerHelperImpl().pickImageFileFromCamera();
                       }
-                    else
+                    else if (flag == false)
                       {
                         imageFile =
                         await ImagePickerHelperImpl().pickImageFileFromGallery();

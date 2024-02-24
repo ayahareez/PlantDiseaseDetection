@@ -15,10 +15,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      splash: Image.asset(
-        'assets/images/Logo.png',
-        width: 600,
-        height: 600,
+      splash:Transform.scale(
+        scale: 2.5, // Adjust scaling factor
+        child: Image.asset(
+          'assets/images/Logo.png',
+          fit: BoxFit.cover,
+        ),
       ),
       nextScreen: LoginPage(),
       splashTransition: SplashTransition.slideTransition,
