@@ -15,11 +15,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      splash: Lottie.asset(
-        'assets/images/splash.json',
-        width: 250,
-        height: 250,
-        fit: BoxFit.cover, // or BoxFit.fill, BoxFit.contain, etc.
+      splash: Image.asset(
+        'assets/images/Logo.png',
+        width: 600,
+        height: 600,
       ),
       nextScreen: LoginPage(),
       splashTransition: SplashTransition.slideTransition,
