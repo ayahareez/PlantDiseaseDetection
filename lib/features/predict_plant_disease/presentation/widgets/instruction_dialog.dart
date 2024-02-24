@@ -60,7 +60,7 @@ Future<void> showInstructionsDialog(BuildContext context,
             actions: <Widget>[
               TextButton(
                   onPressed: () async {
-                    imageFile =
+                    imageFile =// TODO condition
                     await ImagePickerHelperImpl().pickImageFileFromCamera();
                     if (imageFile != null) {
                       // imageUrl = await StorageHelperImpl()

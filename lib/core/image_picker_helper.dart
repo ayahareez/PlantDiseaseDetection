@@ -10,7 +10,7 @@ abstract class ImagePickerHelper {
 class ImagePickerHelperImpl extends ImagePickerHelper {
   @override
   Future<File?> pickImageFileFromGallery() => ImagePicker()
-      .pickImage(source: ImageSource.camera)
+      .pickImage(source: ImageSource.gallery)
       .then((file) => file == null ? null : File(file.path));
   @override
   Future<File?> pickImageFileFromCamera() => ImagePicker()
