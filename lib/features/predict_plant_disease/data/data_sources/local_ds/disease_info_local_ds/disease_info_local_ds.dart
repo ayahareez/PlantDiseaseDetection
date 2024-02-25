@@ -44,5 +44,27 @@ List<DiseaseInformationModel> diseaseInfo = [
       diseaseRecovery:
           'Fungicidal Treatments: Apply fungicides at the first signs of Black Rot to limit its spread.Pruning Infected Parts: Trim and remove infected branches and fruit to prevent further infections.Cultural Practices: Adjust irrigation to reduce leaf wetness and promote soil drainage.Post-Harvest Inspection: Carefully inspect harvested apples, discarding any with Black Rot symptoms.',
       diseaseName: 'Black Rot',
-      plantCategory: 'Apple')
+      plantCategory: 'Apple'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Gray Leaf Spot (GLS) is a foliar disease caused by the fungus Cercospora zeae-maydis. Primarily affects corn plants, leading to significant yield losses if not managed properly',
+      diseaseCauses:
+      'Fungus Cercospora zeae-maydis is the causal agent. Thrives in warm and humid conditions.High plant density and continuous corn cultivation contribute to its spread.',
+      diseasePrevention:
+      'Crop rotation with non-host plants. Plant resistant or tolerant corn varieties.Proper spacing for air circulation.',
+      diseaseRecovery:
+      'Fungicidal Treatments: Apply recommended fungicides based on disease severity.Cultural Practices: Adjust planting dates to avoid peak disease periods..Cultural Practices: Adjust irrigation to reduce leaf wetness and promote soil drainage.Enhance air circulation, reduce humidity.Remove and destroy infected plant residues.Post-Harvest Clean-Up: Remove and destroy infected plant residues post-harvest, Reduce overwintering potential.',
+      diseaseName: 'Gray Leaf Spot',
+      plantCategory: 'corn'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Common Rust is a foliar disease caused by the fungus Puccinia sorghi.Characterized by small, circular to elongated reddish-brown pustules on both upper and lower leaf surfaces.',
+      diseaseCauses:
+      'Fungal Pathogen: Common Rust in corn is caused by the fungus Puccinia sorghi.Warmth: Optimal temperatures for Common Rust development range between 59°F to 77°F (15°C to 25°C). ',
+      diseasePrevention:
+      'Plant resistant corn varieties. Rotate crops to disrupt the disease cycle.Timely planting to avoid extended humidity periods.',
+      diseaseRecovery:
+      'Fungicide Application: Apply fungicides labeled for rust control.Harvest Management: Harvest at appropriate maturity to minimize rust impact on grain quality.Post-Harvest Clean-Up: Remove and destroy infected residues.Reduce inoculum for the next season.Adjust Planting:Consider adjusting planting dates to avoid conducive conditions',
+      diseaseName: 'Common Rust',
+      plantCategory: 'corn'),
 ];
