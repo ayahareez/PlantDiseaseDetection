@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../../core/errors/failures.dart';
 import '../../../../../core/strings/failurs.dart';
+import '../../../domain/entities/disease.dart';
 import '../../../domain/entities/disease_information.dart';
 import '../../../domain/usecases/get_disease_info_usecase.dart';
 
@@ -18,7 +19,7 @@ class DiseaseInfoBloc extends Bloc<DiseaseInfoEvent, DiseaseInfoState> {
       if (event is GetDiseaseInfo) {
         emit(LoadingDiseaseInfoState());
 
-        final failureOrInfo = await getDiseaseInfoUC(event.diseaseInformation);
+        final failureOrInfo = await getDiseaseInfoUC(event.disease);
         emit(_mapFailureOrInfoToState(failureOrInfo));
       }
     });

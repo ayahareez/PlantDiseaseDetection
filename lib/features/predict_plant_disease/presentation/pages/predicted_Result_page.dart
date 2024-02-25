@@ -8,6 +8,7 @@ import 'package:plant_disease/features/predict_plant_disease/data/models/plant_m
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_disease_data_page.dart';
 
 import '../bloc/disease_bloc/disease_bloc.dart';
+import '../bloc/disease_info_bloc/disease_info_bloc.dart';
 import '../widgets/message_display_widget.dart';
 
 class PredictedResultPage extends StatelessWidget {
@@ -48,7 +49,7 @@ class PredictedResultPage extends StatelessWidget {
                 ),
                 TextButton(
                     onPressed: () async {
-
+                      context.read<DiseaseInfoBloc>().add(GetDiseaseInfo(disease:state.disease));
                       Navigator.push(
                           context,
                           MaterialPageRoute(
