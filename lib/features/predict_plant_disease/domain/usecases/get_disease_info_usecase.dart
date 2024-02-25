@@ -9,7 +9,7 @@ class GetDiseaseInfoUC{
 
   GetDiseaseInfoUC({required this.diseaseInfoRepository});
 
-  Future<Either<Failure, DiseaseInformation>> call(String diseaseName){
-    return diseaseInfoRepository.getDiseaseInfo(diseaseName);
+  Future<Either<Failure, DiseaseInformation>> call(DiseaseInformation diseaseInformation){
+    return diseaseInfoRepository.getDiseaseInfo(diseaseInformation);
   }
 }

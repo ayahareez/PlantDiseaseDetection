@@ -6,7 +6,9 @@ abstract class DiseaseInfoEvent extends Equatable {
   List<Object> get props => [];
 }
 class GetDiseaseInfo extends DiseaseInfoEvent {
-  final String diseaseName ;
+  final DiseaseInformation diseaseInformation ;
 
-  GetDiseaseInfo({required this.diseaseName});
+  const GetDiseaseInfo({required this.diseaseInformation});
+
+
 }

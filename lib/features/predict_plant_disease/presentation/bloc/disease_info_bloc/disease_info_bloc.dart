@@ -18,7 +18,7 @@ class DiseaseInfoBloc extends Bloc<DiseaseInfoEvent, DiseaseInfoState> {
       if (event is GetDiseaseInfo) {
         emit(LoadingDiseaseInfoState());
 
-        final failureOrInfo = await getDiseaseInfoUC(event.diseaseName);
+        final failureOrInfo = await getDiseaseInfoUC(event.diseaseInformation);
         emit(_mapFailureOrInfoToState(failureOrInfo));
       }
     });

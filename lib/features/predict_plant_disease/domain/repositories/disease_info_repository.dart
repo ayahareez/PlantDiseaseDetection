@@ -5,5 +5,5 @@ import '../../../../core/errors/failures.dart';
 import '../entities/disease_information.dart';
 
 abstract class DiseaseInfoRepository {
-  Future<Either<Failure, DiseaseInformation>> getDiseaseInfo(String diseaseName);
+  Future<Either<Failure, DiseaseInformation>> getDiseaseInfo(DiseaseInformation diseaseInformation);
 }
