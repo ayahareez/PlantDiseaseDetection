@@ -28,15 +28,15 @@ class DiseaseDataPage extends StatelessWidget {
                 children: [
                   Text(
                     state.diseaseInformation.plantCategory,
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 22),
                   ),
                   Text(
                     state.diseaseInformation.diseaseName,
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 22),
                   ),
                   Text(
                     state.diseaseInformation.diseaseOverview,
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 22),
                   ),
                   Text(
                     state.diseaseInformation.diseaseCauses,

@@ -32,10 +32,10 @@ class PredictedResultPage extends StatelessWidget {
             );
           }
           if (state is LoadedDiseaseState) {
-            print(state.disease.className);
             if (state.disease.className == 'Healthy') {
               print('true');
             }
+            print(state.disease.className);
             return Column(
               children: [
                 Image.file(plantModel.image),

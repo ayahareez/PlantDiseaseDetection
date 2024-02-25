@@ -24,7 +24,7 @@ Future<void> init() async {
   sl.registerFactory(() => DiseaseBloc(addPhotoUC: sl()));
   sl.registerFactory(() => DiseaseInfoBloc(getDiseaseInfoUC: sl()));
 
-// Usecases
+// Use_cases
 
   sl.registerLazySingleton(() => AddPhotoUC(diseaseRepository: sl()));
   sl.registerLazySingleton(() => GetDiseaseInfoUC(diseaseInfoRepository: sl()));
@@ -36,7 +36,7 @@ Future<void> init() async {
   sl.registerLazySingleton<DiseaseInfoRepository>(
       () => DiseaseInfoRepositoryImpl());
 
-// Datasources
+// Data_sources
 
   sl.registerLazySingleton<DiseaseRemoteDs>(
       () => DiseaseRemoteDsImpl(client: sl()));

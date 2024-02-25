@@ -16,7 +16,7 @@ Future<void> showInstructionsDialog(
     String selectedPlant,
     bool flag) async {
   File? imageFile;
-  String? imageUrl;
+  //String? imageUrl;
 
   return showDialog<void>(
     context: context,

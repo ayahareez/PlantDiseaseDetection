@@ -27,15 +27,8 @@ class DiseaseInfoRepositoryImpl implements DiseaseInfoRepository {
       //     diseaseInformationModel = diseaseInfo[i];
       //   }
       // }
-      print(diseaseInformationModel ?? 'hi');
-      return Right(diseaseInformationModel ??
-          DiseaseInformationModel(
-              diseaseOverview: 'diseaseOverview',
-              diseaseCauses: 'diseaseCauses',
-              diseasePrevention: 'diseasePrevention',
-              diseaseRecovery: 'diseaseRecovery',
-              diseaseName: 'diseaseName',
-              plantCategory: 'plantCategory'));
+      print(diseaseInformationModel);
+      return Right(diseaseInformationModel);
     } on EmptyListException {
       return Left(EmptyListFailure());
     }
