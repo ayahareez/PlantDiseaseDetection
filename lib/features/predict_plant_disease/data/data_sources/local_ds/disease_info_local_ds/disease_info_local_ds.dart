@@ -67,4 +67,15 @@ List<DiseaseInformationModel> diseaseInfo = [
       'Fungicide Application: Apply fungicides labeled for rust control.Harvest Management: Harvest at appropriate maturity to minimize rust impact on grain quality.Post-Harvest Clean-Up: Remove and destroy infected residues.Reduce inoculum for the next season.Adjust Planting:Consider adjusting planting dates to avoid conducive conditions',
       diseaseName: 'Common Rust',
       plantCategory: 'corn'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Northern Corn Leaf Blight (NCLB):Causal Agent: Exserohilum turcicum fungus.Symptoms: Elliptical lesions with tan centers and dark borders on leaves.Southern Corn Leaf Blight (SCLB):Causal Agent: Bipolaris maydis fungus.Symptoms: Oval lesions with tan centers on leaves, often leading to extensive damage.',
+      diseaseCauses:
+      'Airborne Spores: Blight spreads through spores carried by wind or rain.Crop Residue: Residue from infected plants can harbor the pathogens. ',
+      diseasePrevention:
+      'Crop Rotation: Avoid continuous planting of corn to break the disease cycle.Resistant Varieties: Select corn varieties with resistance to the prevalent type of blight.Genetic Resistance: Support breeding efforts for resistant traits to enhance long-term control.',
+      diseaseRecovery:
+      'Fungicide Application: Apply fungicides when conditions favor disease development.Cultural Practices:Remove and destroy infected crop residues post-harvest.Post-Harvest Clean-Up:',
+      diseaseName: 'Blight',
+      plantCategory: 'corn'),
 ];
