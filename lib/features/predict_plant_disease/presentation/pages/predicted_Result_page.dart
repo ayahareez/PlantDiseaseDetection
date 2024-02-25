@@ -19,7 +19,10 @@ class PredictedResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('The Predicted Result'),
+        title: const Text(
+          'The Predicted Result',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: BlocBuilder<DiseaseBloc, DiseaseState>(
         builder: (context, state) {
@@ -36,43 +39,130 @@ class PredictedResultPage extends StatelessWidget {
               print('true');
             }
             print(state.disease.className);
-            return Column(
-              children: [
-                Image.file(plantModel.image),
-                Text(
-                  state.disease.plantName,
-                  style: TextStyle(fontSize: 35),
-                ),
-                Text(
-                  state.disease.className,
-                  style: TextStyle(fontSize: 35),
-                ),
-                Text(
-                  state.disease.confidence.toString(),
-                  style: TextStyle(fontSize: 35),
-                ),
-                if (state.disease.className != 'Healthy')
-                  TextButton(
-                      onPressed: () async {
-                        context
-                            .read<DiseaseInfoBloc>()
-                            .add(GetDiseaseInfo(disease: state.disease));
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => DiseaseDataPage()));
-                      },
-                      child: Center(
-                        child: Text(
-                          'See more about the disease',
-                          style: TextStyle(
-                            color: Color(0xff2d232e),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                          ),
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        Image.file(
+                          plantModel.image,
+                          width: 400,
+                          height: 400,
+                          fit: BoxFit.cover,
                         ),
-                      )),
-              ],
+                        SizedBox(height: 30,),
+                        Divider(
+                          color: Colors.grey,
+                          thickness: 1,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'Plant Type: ',
+                              style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              state.disease.plantName,
+                              style: TextStyle(fontSize: 25),
+                            ),
+                          ],
+                        ),
+
+                        Divider(
+                          color: Colors.grey,
+                          thickness: 1,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'type of disease: ',
+                              style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              state.disease.className,
+                              style: TextStyle(fontSize: 25,color: Colors.red,),
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          color: Colors.grey,
+                          thickness: 1,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'confidence: ',
+                              style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              '${(state.disease.confidence * 100).toStringAsFixed(1)}%', // Format confidence value as percentage
+                              style: TextStyle(fontSize: 25),
+                            ),
+                          ],
+                        ),
+                        Divider(
+                          color: Colors.grey,
+                          thickness: 1,
+                        ),
+                        SizedBox(height: 15,),
+                        if (state.disease.className != 'Healthy')
+                          TextButton(
+                            onPressed: () async {
+                              context
+                                  .read<DiseaseInfoBloc>()
+                                  .add(GetDiseaseInfo(disease: state.disease));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DiseaseDataPage(),
+                                ),
+                              );
+                            },
+                            child: Center(
+                              child: ElevatedButton(
+                                onPressed: () async {
+                                  context
+                                      .read<DiseaseInfoBloc>()
+                                      .add(GetDiseaseInfo(disease: state.disease));
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => DiseaseDataPage(),
+                                    ),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.green,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'See more about the disease',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                    SizedBox(width: 8),
+                                    Icon(
+                                      Icons.arrow_forward_rounded,
+                                      color: Colors.white,
+                                      size: 22,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             );
           }
           return const LoadingWidget();

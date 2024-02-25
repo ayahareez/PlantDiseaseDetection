@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       splash:Transform.scale(
-        scale: 2.5, // Adjust scaling factor
+        scale: 1.5, // Adjust scaling factor
         child: Image.asset(
           'assets/images/Logo.png',
           fit: BoxFit.cover,

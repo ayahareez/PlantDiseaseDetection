@@ -126,13 +126,24 @@ Future<void> showInstructionsDialog(BuildContext context,
                     }
                   },
                   child: const Center(
-                    child: Text(
-                      'Take Photo',
-                      style: TextStyle(
-                        color: Color(0xff2d232e),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                      ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Take Photo',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Icon(
+                          Icons.camera_alt,
+                          color: Color(0xff2d232e),
+                          size: 22,
+                        ),
+                      ],
                     ),
                   )),
             ],
