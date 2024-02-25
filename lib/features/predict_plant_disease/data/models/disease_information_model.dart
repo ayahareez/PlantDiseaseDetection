@@ -7,7 +7,7 @@ class DiseaseInformationModel extends DiseaseInformation {
       required super.diseasePrevention,
       required super.diseaseRecovery,
       required super.diseaseName,
-      required super.diseaseCategory});
+      required super.plantCategory});
 
   factory DiseaseInformationModel.fromMap(Map<String, dynamic> map) {
     return DiseaseInformationModel(
@@ -16,7 +16,7 @@ class DiseaseInformationModel extends DiseaseInformation {
         diseasePrevention: map['diseasePrevention'],
         diseaseRecovery: map['diseaseRecovery'],
         diseaseName: map['diseaseName'],
-        diseaseCategory: map['diseaseCategory']);
+        plantCategory: map['diseaseCategory']);
   }
 
   Map<String, dynamic> toMap() {
@@ -26,7 +26,7 @@ class DiseaseInformationModel extends DiseaseInformation {
       'diseasePrevention': diseasePrevention,
       'diseaseRecovery': diseaseRecovery,
       'diseaseName': diseaseName,
-      'diseaseCategory': diseaseCategory
+      'diseaseCategory': plantCategory
     };
   }
 }

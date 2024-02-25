@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:plant_disease/features/predict_plant_disease/data/models/disease_model.dart';
 import 'package:plant_disease/features/predict_plant_disease/domain/entities/disease.dart';
 
-import '../../../../core/errors/exceptions.dart';
+import '../../../../../core/errors/exceptions.dart';
 
 abstract class DiseaseRemoteDs {
   Future<Disease> addPhoto(File imageFile, String plantName);
@@ -33,7 +33,7 @@ class DiseaseRemoteDsImpl implements DiseaseRemoteDs {
         imageFile.readAsBytes().asStream(),
         imageFile.lengthSync(),
         filename: imageFile.path.split('/').last,
-       // contentType: MediaType('image', 'jpeg'), // Adjust the content type accordingly
+        // contentType: MediaType('image', 'jpeg'), // Adjust the content type accordingly
       ),
     );
 
@@ -43,7 +43,8 @@ class DiseaseRemoteDsImpl implements DiseaseRemoteDs {
     // Check the response status code
     if (response.statusCode > 199 && response.statusCode < 300) {
       // Decode the JSON response
-      Map<String, dynamic> decodedJson = jsonDecode(await response.stream.bytesToString());
+      Map<String, dynamic> decodedJson =
+          jsonDecode(await response.stream.bytesToString());
       DiseaseModel diseaseModel = DiseaseModel.fromMap(decodedJson);
       return Future.value(diseaseModel);
     } else {

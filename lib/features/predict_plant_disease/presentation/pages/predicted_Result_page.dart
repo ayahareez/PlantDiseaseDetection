@@ -33,17 +33,25 @@ class PredictedResultPage extends StatelessWidget {
             return Column(
               children: [
                 Image.file(plantModel.image),
-                Text(state.disease.plantName , style: TextStyle(fontSize:35 ),),
-                Text(state.disease.className, style: TextStyle(fontSize:35 ),),
-                Text(state.disease.confidence.toString() , style: TextStyle(fontSize:35 ),),
+                Text(
+                  state.disease.plantName,
+                  style: TextStyle(fontSize: 35),
+                ),
+                Text(
+                  state.disease.className,
+                  style: TextStyle(fontSize: 35),
+                ),
+                Text(
+                  state.disease.confidence.toString(),
+                  style: TextStyle(fontSize: 35),
+                ),
                 TextButton(
                     onPressed: () async {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                   DiseaseDataPage()));
-                      } ,
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DiseaseDataPage()));
+                    },
                     child: const Center(
                       child: Text(
                         'See more about the disease',

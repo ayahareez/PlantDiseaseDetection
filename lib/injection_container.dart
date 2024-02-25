@@ -6,7 +6,7 @@ import 'package:plant_disease/features/predict_plant_disease/presentation/bloc/d
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/networks/network_info.dart';
-import 'features/predict_plant_disease/data/data_sources/disease_remote_ds.dart';
+import 'features/predict_plant_disease/data/data_sources/remote_ds/disease_remote_ds.dart';
 import 'features/predict_plant_disease/domain/repositories/disease_repository.dart';
 import 'features/predict_plant_disease/domain/usecases/add_photo_usecase.dart';
 
@@ -35,7 +35,8 @@ Future<void> init() async {
 
 //! Core
 
-  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(connectionChecker: sl()));
+  sl.registerLazySingleton<NetworkInfo>(
+      () => NetworkInfoImpl(connectionChecker: sl()));
 
 //! External
 

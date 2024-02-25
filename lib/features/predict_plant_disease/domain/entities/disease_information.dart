@@ -6,7 +6,7 @@ class DiseaseInformation extends Equatable {
       diseasePrevention,
       diseaseRecovery,
       diseaseName,
-      diseaseCategory;
+      plantCategory;
 
   const DiseaseInformation(
       {required this.diseaseOverview,
@@ -14,7 +14,7 @@ class DiseaseInformation extends Equatable {
       required this.diseasePrevention,
       required this.diseaseRecovery,
       required this.diseaseName,
-      required this.diseaseCategory});
+      required this.plantCategory});
 
   @override
   List<Object?> get props => throw UnimplementedError();

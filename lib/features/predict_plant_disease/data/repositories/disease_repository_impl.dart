@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
@@ -8,7 +7,7 @@ import 'package:plant_disease/features/predict_plant_disease/domain/entities/dis
 import 'package:plant_disease/features/predict_plant_disease/domain/repositories/disease_repository.dart';
 
 import '../../../../core/errors/exceptions.dart';
-import '../data_sources/disease_remote_ds.dart';
+import '../data_sources/remote_ds/disease_remote_ds.dart';
 
 class DiseaseRepositoryImpl implements DiseaseRepository {
   final NetworkInfo networkInfo;
@@ -20,7 +19,8 @@ class DiseaseRepositoryImpl implements DiseaseRepository {
       File imageUrl, String plantName) async {
     if (await networkInfo.isConnected) {
       try {
-        final Disease disease = await diseaseRemoteDs.addPhoto(imageUrl, plantName);
+        final Disease disease =
+            await diseaseRemoteDs.addPhoto(imageUrl, plantName);
         return Right(disease);
       } on ServerException {
         return Left(ServerFailure());
