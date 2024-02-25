@@ -10,11 +10,13 @@ import '../../../../core/image_picker_helper.dart';
 
 import '../bloc/disease_bloc/disease_bloc.dart';
 
-Future<void> showInstructionsDialog(BuildContext context,
-    void Function(void Function()) setState, String selectedPlant ,bool flag) async {
+Future<void> showInstructionsDialog(
+    BuildContext context,
+    void Function(void Function()) setState,
+    String selectedPlant,
+    bool flag) async {
   File? imageFile;
   String? imageUrl;
-
 
   return showDialog<void>(
     context: context,
@@ -60,16 +62,13 @@ Future<void> showInstructionsDialog(BuildContext context,
             actions: <Widget>[
               TextButton(
                   onPressed: () async {
-                    if (flag == true)
-                      {
-                        imageFile =
-                        await ImagePickerHelperImpl().pickImageFileFromCamera();
-                      }
-                    else if (flag == false)
-                      {
-                        imageFile =
-                        await ImagePickerHelperImpl().pickImageFileFromGallery();
-                      }
+                    if (flag == true) {
+                      imageFile = await ImagePickerHelperImpl()
+                          .pickImageFileFromCamera();
+                    } else if (flag == false) {
+                      imageFile = await ImagePickerHelperImpl()
+                          .pickImageFileFromGallery();
+                    }
 
                     if (imageFile != null) {
                       // imageUrl = await StorageHelperImpl()
@@ -94,7 +93,7 @@ Future<void> showInstructionsDialog(BuildContext context,
                   },
                   child: const Center(
                     child: Text(
-                      'Take Photo',
+                      'Take a Photo',
                       style: TextStyle(
                         color: Color(0xff2d232e),
                         fontWeight: FontWeight.bold,

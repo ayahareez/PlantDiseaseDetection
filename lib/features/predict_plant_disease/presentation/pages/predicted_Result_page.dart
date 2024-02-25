@@ -32,6 +32,10 @@ class PredictedResultPage extends StatelessWidget {
             );
           }
           if (state is LoadedDiseaseState) {
+            print(state.disease.className);
+            if (state.disease.className == 'Healthy') {
+              print('true');
+            }
             return Column(
               children: [
                 Image.file(plantModel.image),
@@ -47,24 +51,27 @@ class PredictedResultPage extends StatelessWidget {
                   state.disease.confidence.toString(),
                   style: TextStyle(fontSize: 35),
                 ),
-                TextButton(
-                    onPressed: () async {
-                      context.read<DiseaseInfoBloc>().add(GetDiseaseInfo(disease:state.disease));
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DiseaseDataPage()));
-                    },
-                    child: const Center(
-                      child: Text(
-                        'See more about the disease',
-                        style: TextStyle(
-                          color: Color(0xff2d232e),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
+                if (state.disease.className != 'Healthy')
+                  TextButton(
+                      onPressed: () async {
+                        context
+                            .read<DiseaseInfoBloc>()
+                            .add(GetDiseaseInfo(disease: state.disease));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DiseaseDataPage()));
+                      },
+                      child: Center(
+                        child: Text(
+                          'See more about the disease',
+                          style: TextStyle(
+                            color: Color(0xff2d232e),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                          ),
                         ),
-                      ),
-                    )),
+                      )),
               ],
             );
           }

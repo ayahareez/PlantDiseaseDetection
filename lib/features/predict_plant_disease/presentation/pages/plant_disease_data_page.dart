@@ -23,35 +23,35 @@ class DiseaseDataPage extends StatelessWidget {
             );
           }
           if (state is LoadedDiseaseInfoState) {
-            return Column(
-              children: [
-                Text(
-                  state.diseaseInformation.plantCategory,
-
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  state.diseaseInformation.diseaseName,
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  state.diseaseInformation.diseaseOverview,
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  state.diseaseInformation.diseaseCauses,
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  state.diseaseInformation.diseasePrevention,
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  state.diseaseInformation.diseaseRecovery,
-                  style: TextStyle(fontSize: 20),
-                ),
-
-              ],
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(
+                    state.diseaseInformation.plantCategory,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    state.diseaseInformation.diseaseName,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    state.diseaseInformation.diseaseOverview,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    state.diseaseInformation.diseaseCauses,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    state.diseaseInformation.diseasePrevention,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    state.diseaseInformation.diseaseRecovery,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ],
+              ),
             );
           }
           return const LoadingWidget();

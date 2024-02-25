@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/bloc/disease_bloc/disease_bloc.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/bloc/disease_info_bloc/disease_info_bloc.dart';
 import 'core/db_helper.dart';
 import 'features/auth/data/datasorce/authentication_remote_ds/authentication.dart';
 import 'features/auth/data/datasorce/user_remote_ds/user_remote_ds.dart';
@@ -28,6 +29,7 @@ Future<void> main() async {
             create: (context) =>
                 UserDataBloc(UserDBModelImp(dbHelper: RemoteDBHelperImp()))),
         BlocProvider(create: (_) => di.sl<DiseaseBloc>()),
+        BlocProvider(create: (context) => di.sl<DiseaseInfoBloc>()),
       ],
       child: MyApp(),
     ),
