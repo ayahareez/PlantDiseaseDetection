@@ -42,6 +42,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
 
   List<String> filteredPlantNames = [];
   List<String> filteredPlantIcons = [];
+  bool isPlantSelected = true; // Add this variable
 
   @override
   void initState() {
@@ -64,6 +65,20 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
         return filteredPlantNames.contains(iconName.capitalize());
       })
           .toList();
+    });
+  }
+
+  void selectPlant(String plantType) {
+    setState(() {
+      selectedPlant = plantType;
+      isPlantSelected = false; // Update isPlantSelected when a plant is selected
+    });
+  }
+
+  void deselectPlant() {
+    setState(() {
+      selectedPlant = '';
+      isPlantSelected = true; // Update isPlantSelected when a plant is deselected
     });
   }
 
@@ -131,9 +146,11 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                   final plantIconPath = filteredPlantIcons[index]; // Get the corresponding image path
                   return GestureDetector(
                     onTap: () {
-                      setState(() {
-                        selectedPlant = plantType;
-                      });
+                      if (selectedPlant == plantType) {
+                        deselectPlant(); // Deselect the plant if it's already selected
+                      } else {
+                        selectPlant(plantType); // Select the plant
+                      }
                     },
                     child: Container(
                       padding: EdgeInsets.all(8), // Add padding to the Container
@@ -196,14 +213,13 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                     // color: Colors.green[100], // Light green color
                   ),
                   child: IconButton(
-                    onPressed: () {
-                      showInstructionsDialog(
-                          context, setState, selectedPlant , true);
+                    onPressed: isPlantSelected ? null : () {
+                      showInstructionsDialog(context, setState, selectedPlant , true);
                     },
                     icon: Icon(
                       Icons.camera_alt,
                       size: 55,
-                      color: Colors.blue,
+                      color: isPlantSelected ? Colors.grey : Colors.blue, // Disable the icon if a plant is selected
                     ),
                   ),
                 ),
@@ -216,14 +232,13 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                     color: Colors.white38,
                   ),
                   child: IconButton(
-                    onPressed: () {
-                      showInstructionsDialog(
-                          context, setState, selectedPlant,false);
+                    onPressed: isPlantSelected ? null : () {
+                      showInstructionsDialog(context, setState, selectedPlant,false);
                     },
                     icon: Icon(
                       Icons.photo,
                       size: 55,
-                      color: Colors.green[500], // Light green color
+                      color: isPlantSelected ? Colors.grey : Colors.green[500], // Disable the icon if a plant is selected
                     ),
                   ),
                 ),
@@ -235,6 +250,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
     );
   }
 }
+
 
 extension StringExtension on String {
   String capitalize() {
