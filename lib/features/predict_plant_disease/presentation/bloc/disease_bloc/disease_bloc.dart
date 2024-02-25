@@ -6,9 +6,9 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:plant_disease/features/predict_plant_disease/domain/entities/disease.dart';
 
-import '../../../../core/errors/failures.dart';
-import '../../../../core/strings/failurs.dart';
-import '../../domain/usecases/add_photo_usecase.dart';
+import '../../../../../core/errors/failures.dart';
+import '../../../../../core/strings/failurs.dart';
+import '../../../domain/usecases/add_photo_usecase.dart';
 
 part 'disease_event.dart';
 part 'disease_state.dart';

@@ -16,7 +16,7 @@ class DiseaseInformationModel extends DiseaseInformation {
         diseasePrevention: map['diseasePrevention'],
         diseaseRecovery: map['diseaseRecovery'],
         diseaseName: map['diseaseName'],
-        plantCategory: map['diseaseCategory']);
+        plantCategory: map['plantCategory']);
   }
 
   Map<String, dynamic> toMap() {
@@ -26,7 +26,7 @@ class DiseaseInformationModel extends DiseaseInformation {
       'diseasePrevention': diseasePrevention,
       'diseaseRecovery': diseaseRecovery,
       'diseaseName': diseaseName,
-      'diseaseCategory': plantCategory
+      'plantCategory': plantCategory
     };
   }
 }

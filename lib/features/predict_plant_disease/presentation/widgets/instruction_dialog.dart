@@ -8,7 +8,7 @@ import 'package:plant_disease/features/predict_plant_disease/presentation/pages/
 
 import '../../../../core/image_picker_helper.dart';
 
-import '../bloc/disease_bloc.dart';
+import '../bloc/disease_bloc/disease_bloc.dart';
 
 Future<void> showInstructionsDialog(BuildContext context,
     void Function(void Function()) setState, String selectedPlant ,bool flag) async {

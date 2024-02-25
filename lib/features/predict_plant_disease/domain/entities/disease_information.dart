@@ -17,5 +17,12 @@ class DiseaseInformation extends Equatable {
       required this.plantCategory});
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [
+        diseaseOverview,
+        diseaseCauses,
+        diseasePrevention,
+        diseaseRecovery,
+        diseaseName,
+        plantCategory
+      ];
 }

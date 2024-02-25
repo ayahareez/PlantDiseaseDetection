@@ -2,7 +2,7 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:plant_disease/features/predict_plant_disease/presentation/bloc/disease_bloc.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/bloc/disease_bloc/disease_bloc.dart';
 import 'core/db_helper.dart';
 import 'features/auth/data/datasorce/authentication_remote_ds/authentication.dart';
 import 'features/auth/data/datasorce/user_remote_ds/user_remote_ds.dart';

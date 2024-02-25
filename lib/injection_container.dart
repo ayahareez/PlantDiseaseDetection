@@ -2,7 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:plant_disease/features/predict_plant_disease/data/repositories/disease_repository_impl.dart';
-import 'package:plant_disease/features/predict_plant_disease/presentation/bloc/disease_bloc.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/bloc/disease_bloc/disease_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/networks/network_info.dart';

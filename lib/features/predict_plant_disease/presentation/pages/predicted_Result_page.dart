@@ -6,7 +6,7 @@ import 'package:plant_disease/core/widgets/loading_widget.dart';
 import 'package:plant_disease/features/predict_plant_disease/data/models/plant_model.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_disease_data_page.dart';
 
-import '../bloc/disease_bloc.dart';
+import '../bloc/disease_bloc/disease_bloc.dart';
 import '../widgets/message_display_widget.dart';
 
 class PredictedResultPage extends StatelessWidget {
