@@ -100,5 +100,15 @@ List<DiseaseInformationModel> diseaseInfo = [
       'Fungicide Application: Timely application of fungicides during critical infection periods.Pruning: Remove and destroy infected leaves, fruit, and twigs to reduce disease pressure.Juniper Management: Consider managing nearby juniper hosts to minimize spore sources.',
       diseaseName: 'Cedar Rust',
       plantCategory: 'apple'),
-
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Symptoms: Small, dark lesions on leaves, fruit, and stems, with a water-soaked appearance.',
+      diseaseCauses:
+      'Xanthomonas spp.: The bacteria, especially Xanthomonas euvesicatoria, is the primary pathogen responsible for causing Bacterial Spot.Warmth: Bacterial Spot thrives in warm temperatures, typically between 75-85°F (24-29°C).',
+      diseasePrevention:
+      'Seed Treatment: Use certified disease-free seeds, and if needed, treat seeds with appropriate disinfectants.Sanitation: Regularly clean tools, equipment, and greenhouse structures to minimize bacterial ',
+      diseaseRecovery:
+      'Fungicide Application: Copper-Based Sprays: Apply copper-based fungicides at recommended intervals, especially during wet periods.Pruning and Removal:Prune Infected Parts: Remove and destroy infected leaves and branches, especially during dry weather.',
+      diseaseName: 'Bacterial spot',
+      plantCategory: 'pepper'),
 ];
