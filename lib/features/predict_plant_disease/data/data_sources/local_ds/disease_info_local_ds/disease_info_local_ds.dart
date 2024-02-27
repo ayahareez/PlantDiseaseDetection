@@ -89,6 +89,16 @@ List<DiseaseInformationModel> diseaseInfo = [
       'Fungicide Application: Apply fungicides labeled for rust control.Harvest Management: Harvest at appropriate maturity to minimize rust impact on grain quality.Post-Harvest Clean-Up: Remove and destroy infected residues.Reduce inoculum for the next season.Adjust Planting:Consider adjusting planting dates to avoid conducive conditions',
       diseaseName: 'Common Rust',
       plantCategory: 'corn'),
-
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Pathogen: Cedar Rust is caused by fungi belonging to the Gymnosporangium genus.Symptoms: Orange to rust-colored spots or lesions on leaves, fruit, and twigs',
+      diseaseCauses:
+      'Pathogen: Gymnosporangium juniperi-virginianae, a fungus that alternates between apple trees and junipers.Environmental Factors:Moisture: High humidity and wet conditions promote spore germination and disease development.',
+      diseasePrevention:
+      'planting Distance: Keep apple trees away from junipers to reduce spore transmission.Resistant Varieties: Choose apple varieties with resistance to Cedar Apple Rust.Proper Pruning: Maintain good air circulation through proper pruning practices.',
+      diseaseRecovery:
+      'Fungicide Application: Timely application of fungicides during critical infection periods.Pruning: Remove and destroy infected leaves, fruit, and twigs to reduce disease pressure.Juniper Management: Consider managing nearby juniper hosts to minimize spore sources.',
+      diseaseName: 'Cedar Rust',
+      plantCategory: 'apple'),
 
 ];
