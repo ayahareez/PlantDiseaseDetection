@@ -155,4 +155,15 @@ List<DiseaseInformationModel> diseaseInfo = [
       'Pruning Practices:Clean and Careful Pruning: Minimize wounds and ensure proper healing to prevent pathogen entry.Fungicide Application: Apply fungicides preventively; however, complete control is challenging.Careful Selection: Choose cover crops that do not host the Esca pathogens.',
       diseaseName: 'Esca (Black Measles)',
       plantCategory: 'grape'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Circular Lesions: Small, dark, circular lesions on leaves, expanding over time.Leaf Yellowing and Wilting: Surrounding tissues of lesions turn yellow, leading to wilting.',
+      diseaseCauses:
+      'Fungus: Guignardia bidwellii is the primary pathogen causing Black Rot.Warm and Wet Weather: Black Rot thrives in warm temperatures and high humidity..',
+      diseasePrevention:
+      'Fungicide Application: Regular application of fungicides, especially during critical growth stages.Canopy Management: Proper pruning to enhance air circulation and reduce humidity.Resistant Varieties: Choose grape varieties with some level of resistance to Black Rot.',
+      diseaseRecovery:
+      'Pruning and Removal:Remove infected plant material to minimize disease pressure.Sanitation Practices:Reduce inoculum and prevent overwintering of the pathogen.Fungicide Applications:Control and prevent further infection during the growing season.Post-Infection Sprays:Control the disease if symptoms are observed later in the season.',
+      diseaseName: 'Black rot',
+      plantCategory: 'grape'),
 ];
