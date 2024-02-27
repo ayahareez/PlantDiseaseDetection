@@ -122,4 +122,15 @@ List<DiseaseInformationModel> diseaseInfo = [
       'Rotation: Practice crop rotation to break the disease cycle and reduce pathogen buildup.Soil Solarization: Solarize the soil in affected areas to reduce fungal viability.Resistant Cover Crops: Consider planting cover crops that are resistant to the pathogen.',
       diseaseName: 'Diseased plant',
       plantCategory: 'cotton'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Causal Agents: Various fungi, such as Podosphaera spp., causing powdery mildew in cherry trees.Symptoms: White, powdery spots on leaves, flowers, and fruit surfaces.',
+      diseaseCauses:
+      'Humidity: High humidity, especially in crowded canopies, promotes powdery mildew development.Crowded Planting: Poor air circulation in dense canopies increases disease risk.',
+      diseasePrevention:
+      'Pruning: Thin branches to improve air circulation, reducing humidity and minimizing disease spread.Site Selection: Plant in areas with good air movement and sunlight exposure.',
+      diseaseRecovery:
+      'Sulfur and Fungicidal Sprays: Apply fungicides like sulfur or other approved fungicides at recommended intervals.Prune Infected Parts: Remove and destroy severely infected leaves and shoots during the growing season.',
+      diseaseName: 'Powdery mildew',
+      plantCategory: 'cherry'),
 ];
