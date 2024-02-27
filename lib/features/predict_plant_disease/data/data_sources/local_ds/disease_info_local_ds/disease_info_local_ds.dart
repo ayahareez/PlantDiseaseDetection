@@ -166,4 +166,26 @@ List<DiseaseInformationModel> diseaseInfo = [
       'Pruning and Removal:Remove infected plant material to minimize disease pressure.Sanitation Practices:Reduce inoculum and prevent overwintering of the pathogen.Fungicide Applications:Control and prevent further infection during the growing season.Post-Infection Sprays:Control the disease if symptoms are observed later in the season.',
       diseaseName: 'Black rot',
       plantCategory: 'grape'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Lesions: Small, water-soaked lesions on leaves, turning brown with a halo.Lesion Coalescence: Lesions may merge, causing extensive leaf damage.',
+      diseaseCauses:
+      'Bacterium: Xanthomonas vesicatoria is the primary pathogen causing Bacterial Spot in tomatoes.Warm and Humid Weather: Bacterial Spot thrives in warm and humid conditions.Rain Splash: Bacterial Spot is often spread through splashing water, especially during rain.',
+      diseasePrevention:
+      'Resistant Varieties: Choose tomato varieties with resistance to Bacterial Spot.Sanitation Practices: Remove and destroy infected plant debris to reduce inoculum.Crop Rotation: Rotate tomato crops to minimize pathogen buildup in the soil.',
+      diseaseRecovery:
+      'Sanitation Practices:Remove Infected Debris: Clear and destroy infected plant material to reduce overwintering sources.Copper Fungicides: Apply copper-based sprays as a preventive measure early in the growing season.Drip Irrigation: Use drip irrigation to minimize water splashing and reduce disease spread.',
+      diseaseName: 'Bacterial spot',
+      plantCategory: 'tomato'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Target-Like Lesions: Dark concentric rings on leaves resembling a target.Yellowing: Lower leaves exhibit yellowing and wilting.Fruit Lesions: Dark spots may develop on green and ripe tomatoes.',
+      diseaseCauses:
+      'Fungi: Primarily Alternaria solani and Alternaria tomatophila are responsible for Early Blight.Warm and Humid Weather: Favors the rapid development and spread of the fungus.',
+      diseasePrevention:
+      'Resistant Varieties: Choose tomato varieties with resistance to Bacterial Spot.Sanitation Practices: Remove and destroy infected plant debris to reduce inoculum.Crop Rotation: Rotate tomato crops to minimize pathogen buildup in the soil.',
+      diseaseRecovery:
+      'Fungicide Applications:Preventive Sprays: Apply fungicides early in the growing season as a preventive measure.Crop Rotation:Diversify Planting Locations: Rotate tomatoes with non-host crops to break the disease cycle.',
+      diseaseName: 'Early blight',
+      plantCategory: 'tomato'),
 ];
