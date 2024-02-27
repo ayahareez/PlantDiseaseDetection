@@ -133,4 +133,15 @@ List<DiseaseInformationModel> diseaseInfo = [
       'Sulfur and Fungicidal Sprays: Apply fungicides like sulfur or other approved fungicides at recommended intervals.Prune Infected Parts: Remove and destroy severely infected leaves and shoots during the growing season.',
       diseaseName: 'Powdery mildew',
       plantCategory: 'cherry'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Pathogen: Isariopsis spp., causing Isariopsis Leaf Spot or Leaf Blight.Circular Lesions: Small, round lesions with dark margins on grape leaves.',
+      diseaseCauses:
+      'Fungal Pathogen:Causative Agent: Isariopsis spp., a fungal pathogen responsible for Isariopsis Leaf Spot or Leaf Blight.Environmental Conditions:Humidity: High humidity levels, especially in the presence of extended leaf wetness, create favorable conditions for fungal growth.',
+      diseasePrevention:
+      'Pruning: Promote good air circulation through proper pruning to reduce humidity in the canopy.Canopy Management: Optimize vine training systems to enhance sunlight penetration and air movement.',
+      diseaseRecovery:
+      'Fungicide Application:Preventive Sprays: Apply fungicides preventively, especially during periods of high disease pressure.Systemic Fungicides: Consider systemic fungicides for long-lasting protection.Copper Applications: Use copper-based fungicides, following recommended rates and schedules.',
+      diseaseName: 'Leaf_blight (Isariopsis Leaf Spot)',
+      plantCategory: 'grape'),
 ];
