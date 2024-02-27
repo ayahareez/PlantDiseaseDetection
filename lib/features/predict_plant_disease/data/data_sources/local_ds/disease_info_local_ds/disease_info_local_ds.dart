@@ -111,4 +111,15 @@ List<DiseaseInformationModel> diseaseInfo = [
       'Fungicide Application: Copper-Based Sprays: Apply copper-based fungicides at recommended intervals, especially during wet periods.Pruning and Removal:Prune Infected Parts: Remove and destroy infected leaves and branches, especially during dry weather.',
       diseaseName: 'Bacterial spot',
       plantCategory: 'pepper'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Symptoms: Wilting, yellowing, and sudden death of plants. Characterized by a distinctive dark, reddish-brown discoloration of roots.',
+      diseaseCauses:
+      'Soil Conditions: Compacted or poorly draining soils can create a favorable environment for the pathogen.Plant Stress: Environmental stressors, such as drought or excessive moisture, weaken plants, making them more susceptible.',
+      diseasePrevention:
+      'Site Selection: Choose well-draining soils with good aeration.Rotation: Practice crop rotation to break the disease cycle and reduce pathogen buildup. ',
+      diseaseRecovery:
+      'Rotation: Practice crop rotation to break the disease cycle and reduce pathogen buildup.Soil Solarization: Solarize the soil in affected areas to reduce fungal viability.Resistant Cover Crops: Consider planting cover crops that are resistant to the pathogen.',
+      diseaseName: 'Diseased plant',
+      plantCategory: 'cotton'),
 ];
