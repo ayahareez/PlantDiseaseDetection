@@ -1,8 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:plant_disease/features/auth/presentation/pages/sample.dart';
+import 'package:plant_disease/features/auth/presentation/pages/login_page.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_photo_page.dart';
 import '../../data/model/user_model.dart';
 import '../bloc/auth_bloc/authentication_bloc.dart';
@@ -14,17 +13,16 @@ class SignUpPage extends StatelessWidget {
   var email = TextEditingController();
   var name = TextEditingController();
   var password = TextEditingController();
-  GlobalKey<FormState> GlobalKeyForm = GlobalKey();
+  GlobalKey<FormState> globalKeyForm = GlobalKey();
   String? userId;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Form(
-          key: GlobalKeyForm,
+          key: globalKeyForm,
           child: Center(
             child: SingleChildScrollView(
               child: Column(
@@ -32,11 +30,9 @@ class SignUpPage extends StatelessWidget {
                 children: [
                   Center(
                     child: Lottie.asset(
-                      'assets/images/plant.json',
-                      // Replace with the actual path to your Lottie JSON file
+                      'assets/animations/plant.json',
                       width: 250,
                       height: 250,
-                      // Other options...
                     ),
                   ),
                   const Text(
@@ -66,7 +62,7 @@ class SignUpPage extends StatelessWidget {
                       }
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
                   TextFormField(
@@ -91,7 +87,7 @@ class SignUpPage extends StatelessWidget {
                         return null;
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15.0,
                   ),
                   TextFormField(
@@ -122,15 +118,18 @@ class SignUpPage extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                        colors: [Color(0xff276E23), Color(0xff98C496)],
+                      gradient: const LinearGradient(
+                        colors: [
+                          Color(0xff276E23),
+                          Color(0xff38b000),
+                        ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
                     ),
                     child: MaterialButton(
                       onPressed: () async {
-                        if (GlobalKeyForm.currentState!.validate()) {
+                        if (globalKeyForm.currentState!.validate()) {
                           UserModel userModel =
                               UserModel(name: name.text, id: '');
                           context.read<AuthenticationBloc>().add(SignUpEvent(
@@ -147,7 +146,8 @@ class SignUpPage extends StatelessWidget {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PlantPhotoPage()));
+                                  builder: (context) =>
+                                      const PlantPhotoPage()));
                         }
                       },
                       child: const Text(
@@ -163,6 +163,29 @@ class SignUpPage extends StatelessWidget {
                   const SizedBox(
                     height: 35.0,
                   ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => LoginPage()));
+                    },
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Already have an Account?  ',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                  fontFamily: 'MyFont')),
+                          Text('Login',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Color(0xff276E23),
+                                  fontFamily: 'MyFont')),
+                        ],
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

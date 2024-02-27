@@ -1,11 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:plant_disease/core/errors/exceptions.dart';
-
 import 'package:plant_disease/core/errors/failures.dart';
 import 'package:plant_disease/features/predict_plant_disease/data/models/disease_information_model.dart';
-
 import 'package:plant_disease/features/predict_plant_disease/domain/entities/disease_information.dart';
-
 import '../../domain/entities/disease.dart';
 import '../../domain/repositories/disease_info_repository.dart';
 import '../data_sources/local_ds/disease_info_local_ds/disease_info_local_ds.dart';

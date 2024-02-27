@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/widgets/loading_widget.dart';
 import '../bloc/disease_info_bloc/disease_info_bloc.dart';
 import '../widgets/message_display_widget.dart';

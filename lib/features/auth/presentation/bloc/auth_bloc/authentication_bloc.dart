@@ -6,9 +6,7 @@ import 'package:meta/meta.dart';
 import '../../../data/datasorce/authentication_remote_ds/authentication.dart';
 import '../../../data/datasorce/user_remote_ds/user_remote_ds.dart';
 import '../../../data/model/user_model.dart';
-
 part 'authentication_event.dart';
-
 part 'authentication_state.dart';
 
 class AuthenticationBloc

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plant_disease/features/auth/presentation/bloc/auth_bloc/authentication_bloc.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/widgets/instruction_dialog.dart';
+
+import '../../../auth/presentation/pages/login_page.dart';
 
 class PlantPhotoPage extends StatefulWidget {
   const PlantPhotoPage({Key? key}) : super(key: key);
@@ -57,28 +61,28 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
       filteredPlantNames = plantNames
           .where((name) => name.toLowerCase().contains(query.toLowerCase()))
           .toList();
-      filteredPlantIcons = plantIcons
-          .where((icon) {
+      filteredPlantIcons = plantIcons.where((icon) {
         // Extract the plant name from the icon path
         String iconName = icon.split('/').last.split('.').first;
         // Check if the filtered plant names contain the extracted plant name
         return filteredPlantNames.contains(iconName.capitalize());
-      })
-          .toList();
+      }).toList();
     });
   }
 
   void selectPlant(String plantType) {
     setState(() {
       selectedPlant = plantType;
-      isPlantSelected = false; // Update isPlantSelected when a plant is selected
+      isPlantSelected =
+          false; // Update isPlantSelected when a plant is selected
     });
   }
 
   void deselectPlant() {
     setState(() {
       selectedPlant = '';
-      isPlantSelected = true; // Update isPlantSelected when a plant is deselected
+      isPlantSelected =
+          true; // Update isPlantSelected when a plant is deselected
     });
   }
 
@@ -90,21 +94,29 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
           title: Text(
             "Bezra",
             style: TextStyle(
-              color: Color(0xffffffff),
               fontWeight: FontWeight.bold, // Making text bold
             ),
           ),
-          backgroundColor: Color(0xff4cae50),
           actions: [
-            IconButton(
-              icon: Icon(
-                Icons.menu,
-              ),
-              onPressed: () {
-                // Handle menu icon click here
-                // You can open a menu or navigate to another screen
+            BlocListener<AuthenticationBloc, AuthenticationState>(
+              listener: (context, state) {
+                if (state is UnAuthorized) {
+                  Navigator.popUntil(
+                    context,
+                    (_) => false,
+                  );
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginPage()));
+                }
               },
-            ),
+              child: IconButton(
+                  onPressed: () {
+                    context.read<AuthenticationBloc>().add(SignOutEvent());
+                  },
+                  icon: const Icon(Icons.logout)),
+            )
           ],
         ),
         body: Column(
@@ -134,7 +146,8 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
             ),
             Expanded(
               child: GridView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 16), // Add padding to the GridView
+                padding: EdgeInsets.symmetric(
+                    horizontal: 16), // Add padding to the GridView
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3, // Number of columns
                   crossAxisSpacing: 8, // Spacing between columns
@@ -143,7 +156,8 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                 itemCount: filteredPlantNames.length,
                 itemBuilder: (context, index) {
                   final plantType = filteredPlantNames[index];
-                  final plantIconPath = filteredPlantIcons[index]; // Get the corresponding image path
+                  final plantIconPath = filteredPlantIcons[
+                      index]; // Get the corresponding image path
                   return GestureDetector(
                     onTap: () {
                       if (selectedPlant == plantType) {
@@ -153,7 +167,8 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                       }
                     },
                     child: Container(
-                      padding: EdgeInsets.all(8), // Add padding to the Container
+                      padding:
+                          EdgeInsets.all(8), // Add padding to the Container
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: selectedPlant == plantType
@@ -163,11 +178,16 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset(plantIconPath, width: 60, height: 60), // Increase size of the image
+                          Image.asset(plantIconPath,
+                              width: 60,
+                              height: 60), // Increase size of the image
                           SizedBox(height: 4),
                           Text(
                             plantType,
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold), // Adjust size and weight here
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight
+                                    .bold), // Adjust size and weight here
                           ),
                         ],
                       ),
@@ -176,13 +196,14 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                 },
               ),
             ),
-            SizedBox(height: 16), // Added space between the GridView and the note
+            SizedBox(
+                height: 16), // Added space between the GridView and the note
             Container(
               padding: EdgeInsets.all(8),
               margin: EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Colors.green[100], // Light red color
+                color: Color(0xffc8e6c9), // Light red color
               ),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -190,11 +211,13 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                   children: [
                     Text(
                       '* ',
-                      style: TextStyle(fontSize: 20, color: Colors.red), // Red star
+                      style: TextStyle(
+                          fontSize: 20, color: Colors.red), // Red star
                     ),
                     Text(
                       'Upload a Photo Of Your Plant\'s leaf ',
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
@@ -213,13 +236,19 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                     // color: Colors.green[100], // Light green color
                   ),
                   child: IconButton(
-                    onPressed: isPlantSelected ? null : () {
-                      showInstructionsDialog(context, setState, selectedPlant , true);
-                    },
+                    onPressed: isPlantSelected
+                        ? null
+                        : () {
+                            showInstructionsDialog(
+                                context, setState, selectedPlant, true);
+                          },
                     icon: Icon(
                       Icons.camera_alt,
                       size: 55,
-                      color: isPlantSelected ? Colors.grey : Colors.blue, // Disable the icon if a plant is selected
+                      color: isPlantSelected
+                          ? Colors.grey
+                          : Colors
+                              .blue, // Disable the icon if a plant is selected
                     ),
                   ),
                 ),
@@ -232,13 +261,19 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                     color: Colors.white38,
                   ),
                   child: IconButton(
-                    onPressed: isPlantSelected ? null : () {
-                      showInstructionsDialog(context, setState, selectedPlant,false);
-                    },
+                    onPressed: isPlantSelected
+                        ? null
+                        : () {
+                            showInstructionsDialog(
+                                context, setState, selectedPlant, false);
+                          },
                     icon: Icon(
                       Icons.photo,
                       size: 55,
-                      color: isPlantSelected ? Colors.grey : Colors.green[500], // Disable the icon if a plant is selected
+                      color: isPlantSelected
+                          ? Colors.grey
+                          : Colors.green[
+                              500], // Disable the icon if a plant is selected
                     ),
                   ),
                 ),
@@ -246,15 +281,20 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
             )
           ],
         ),
+        // bottomNavigationBar: BottomNavigationBar(
+        //   items: [
+        //     BottomNavigationBarItem(icon: Icon(Icons.home)),
+        //     BottomNavigationBarItem(icon: Icon(Icons.hive_sharp)),
+        //     BottomNavigationBarItem(icon: Icon(Icons.energy_savings_leaf))
+        //   ],
+        // ),
       ),
     );
   }
 }
-
 
 extension StringExtension on String {
   String capitalize() {
     return "${this[0].toUpperCase()}${this.substring(1)}";
   }
 }
-

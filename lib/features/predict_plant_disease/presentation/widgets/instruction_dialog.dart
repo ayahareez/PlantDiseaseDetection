@@ -11,11 +11,13 @@ import '../../../../core/storage_helper.dart';
 //import '../bloc/disease_bloc.dart';
 import '../bloc/disease_bloc/disease_bloc.dart';
 
-Future<void> showInstructionsDialog(BuildContext context,
-    void Function(void Function()) setState, String selectedPlant ,bool flag) async {
+Future<void> showInstructionsDialog(
+    BuildContext context,
+    void Function(void Function()) setState,
+    String selectedPlant,
+    bool flag) async {
   File? imageFile;
   String? imageUrl;
-  bool flag = false;
 
   return showDialog<void>(
     context: context,
@@ -31,61 +33,95 @@ Future<void> showInstructionsDialog(BuildContext context,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text('1. Capture a Single Leaf:',
-                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+                  Text(
+                    '1. Capture a Single Leaf:',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  Text('- Take a picture of a single leaf from the plant.',
-                    style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 15),
+                  Text(
+                    '- Take a picture of a single leaf from the plant.',
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
                   ),
-                  Text('- Make sure it is a clear image and not blurry.',
-                    style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 15),),
+                  Text(
+                    '- Make sure it is a clear image and not blurry.',
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
+                  ),
                   SizedBox(height: 10),
-                  Text('2. Avoid Clutter:',
-                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+                  Text(
+                    '2. Avoid Clutter:',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Text(
                     '- Ensure there is no clutter in the background to help the model focus on the leaf.',
-                    style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 15),
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
                   ),
                   SizedBox(height: 10),
-                  Text('3. No Overlapping Leaves:',
-                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+                  Text(
+                    '3. No Overlapping Leaves:',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Text(
                     '- Do not capture overlapping leaves; the model works best with a single, isolated leaf.',
-                    style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 15),
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
                   ),
                   SizedBox(height: 10),
-                  Text('4. Corn Plant Specifics:',
-                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+                  Text(
+                    '4. Corn Plant Specifics:',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Text(
                     '- If you are capturing a corn plant, focus on capturing a part of the leaf, not the entire leaf.',
-                    style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 15),
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
                   ),
                   SizedBox(height: 10),
-                  Text('5. Good Lighting:',
-                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+                  Text(
+                    '5. Good Lighting:',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Text(
                     '- Ensure there is sufficient lighting for a clear image.',
-                    style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 15),
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
                   ),
                   SizedBox(height: 10),
-                  Text('6. No Distortions:',
-                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+                  Text(
+                    '6. No Distortions:',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Text(
                     '- Avoid any distortions in the image; a straightforward picture works best.',
-                    style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 15),
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
                   ),
                   SizedBox(height: 10),
-                  Text('7. High-Quality Image:',
-                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+                  Text(
+                    '7. High-Quality Image:',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Text(
                     '- Capture the image in high resolution for accurate disease prediction.',
-                    style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 15),
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
                   ),
                 ],
               ),
@@ -93,16 +129,13 @@ Future<void> showInstructionsDialog(BuildContext context,
             actions: <Widget>[
               TextButton(
                   onPressed: () async {
-                    if (flag == true)
-                      {
-                        imageFile =
-                        await ImagePickerHelperImpl().pickImageFileFromCamera();
-                      }
-                    else
-                      {
-                        imageFile =
-                        await ImagePickerHelperImpl().pickImageFileFromGallery();
-                      }
+                    if (flag == true) {
+                      imageFile = await ImagePickerHelperImpl()
+                          .pickImageFileFromCamera();
+                    } else {
+                      imageFile = await ImagePickerHelperImpl()
+                          .pickImageFileFromGallery();
+                    }
 
                     if (imageFile != null) {
                       // imageUrl = await StorageHelperImpl()
@@ -130,7 +163,7 @@ Future<void> showInstructionsDialog(BuildContext context,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'Take Photo',
+                          'Take a Photo',
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,

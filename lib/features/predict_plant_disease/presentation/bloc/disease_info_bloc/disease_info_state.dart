@@ -7,16 +7,14 @@ abstract class DiseaseInfoState extends Equatable {
   List<Object> get props => [];
 }
 
-class DiseaseInfoInitial extends DiseaseInfoState {
+class DiseaseInfoInitial extends DiseaseInfoState {}
 
-}
 class LoadingDiseaseInfoState extends DiseaseInfoState {}
 
 class LoadedDiseaseInfoState extends DiseaseInfoState {
   final DiseaseInformation diseaseInformation;
 
   const LoadedDiseaseInfoState({required this.diseaseInformation});
-
 
   @override
   List<Object> get props => [diseaseInformation];

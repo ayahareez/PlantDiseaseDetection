@@ -2,9 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
-import 'package:plant_disease/features/auth/presentation/pages/sample.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_photo_page.dart';
 import '../bloc/auth_bloc/authentication_bloc.dart';
 import 'sign_up_page.dart';
@@ -34,12 +32,14 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: BlocConsumer<AuthenticationBloc, AuthenticationState>(
         listener: (context, state) async {
           if (state is Authorized) {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => PlantPhotoPage()));
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (_) => const PlantPhotoPage()));
+          }
+          if (state is AuthError) {
+            showToast("An error occurred: ${state.error}");
           }
         },
         builder: (context, state) {
@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Center(
                           child: Lottie.asset(
-                            'assets/images/Animation - 1706314168418.json',
+                            'assets/animations/Animation - 1706314168418.json',
                             // Replace with the actual path to your Lottie JSON file
                             width: 250,
                             height: 250,
@@ -95,8 +95,9 @@ class _LoginPageState extends State<LoginPage> {
                                 !text.endsWith('.com') ||
                                 text.startsWith('@')) {
                               return 'Wrong data ';
-                            } else
+                            } else {
                               return null;
+                            }
                           },
                         ),
                         const SizedBox(
@@ -134,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                             gradient: const LinearGradient(
                               colors: [
                                 Color(0xff276E23),
-                                Color(0xff98C496),
+                                Color(0xff38b000),
                               ],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
@@ -178,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
-                              'Don\'t have an acount ? ',
+                              'Don\'t have an account ? ',
                               style:
                                   TextStyle(fontSize: 18, fontFamily: 'MyFont'),
                             ),
@@ -210,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: const Text(' Login as a guest',
                                 style: TextStyle(
                                     fontSize: 20,
-                                    color: Colors.black,
+                                    color: Color(0xff276E23),
                                     fontFamily: 'MyFont')),
                           ),
                         )
@@ -226,4 +227,16 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+}
+
+void showToast(String message) {
+  Fluttertoast.showToast(
+    msg: message,
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.CENTER,
+    timeInSecForIosWeb: 1,
+    backgroundColor: Colors.red,
+    textColor: Colors.white,
+    fontSize: 16.0,
+  );
 }

@@ -1,8 +1,6 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-
 import '../../../../../core/errors/failures.dart';
 import '../../../../../core/strings/failurs.dart';
 import '../../../domain/entities/disease.dart';
@@ -13,8 +11,9 @@ part 'disease_info_event.dart';
 part 'disease_info_state.dart';
 
 class DiseaseInfoBloc extends Bloc<DiseaseInfoEvent, DiseaseInfoState> {
-  final GetDiseaseInfoUC getDiseaseInfoUC ;
-  DiseaseInfoBloc({required this.getDiseaseInfoUC}) : super(DiseaseInfoInitial()) {
+  final GetDiseaseInfoUC getDiseaseInfoUC;
+  DiseaseInfoBloc({required this.getDiseaseInfoUC})
+      : super(DiseaseInfoInitial()) {
     on<DiseaseInfoEvent>((event, emit) async {
       if (event is GetDiseaseInfo) {
         emit(LoadingDiseaseInfoState());
@@ -25,11 +24,13 @@ class DiseaseInfoBloc extends Bloc<DiseaseInfoEvent, DiseaseInfoState> {
     });
   }
 
-  DiseaseInfoState _mapFailureOrInfoToState(Either<Failure, DiseaseInformation> either) {
+  DiseaseInfoState _mapFailureOrInfoToState(
+      Either<Failure, DiseaseInformation> either) {
     return either.fold(
-          (failure) => ErrorDiseaseInfoState(message: _mapFailureToMessage(failure)),
-          (diseaseInformation) => LoadedDiseaseInfoState(diseaseInformation: diseaseInformation)
-    );
+        (failure) =>
+            ErrorDiseaseInfoState(message: _mapFailureToMessage(failure)),
+        (diseaseInformation) =>
+            LoadedDiseaseInfoState(diseaseInformation: diseaseInformation));
   }
 
   String _mapFailureToMessage(Failure failure) {

@@ -28,8 +28,9 @@ class MessageDiseaseState extends DiseaseState {
   @override
   List<Object> get props => [message];
 }
- class LoadedDiseaseState extends DiseaseState{
-  final Disease disease ;
+
+class LoadedDiseaseState extends DiseaseState {
+  final Disease disease;
 
   LoadedDiseaseState({required this.disease});
- }
+}

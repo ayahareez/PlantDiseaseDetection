@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:plant_disease/features/predict_plant_disease/domain/entities/disease.dart';
 import 'package:plant_disease/features/predict_plant_disease/domain/repositories/disease_repository.dart';
 
