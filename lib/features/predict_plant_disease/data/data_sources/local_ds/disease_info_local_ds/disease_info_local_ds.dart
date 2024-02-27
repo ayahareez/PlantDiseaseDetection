@@ -55,5 +55,40 @@ List<DiseaseInformationModel> diseaseInfo = [
       diseaseRecovery:
           'Fungicidal Treatments: Apply fungicides at the first signs of scab to limit its spread.Pruning Infected Parts: Trim and remove infected branches, leaves, and fruit to prevent further infections.Cultural Practices: Adjust irrigation to minimize leaf wetness and promote soil drainage.Post-Harvest Inspection: Carefully inspect harvested apples, discarding any with scab symptoms.',
       diseaseName: 'Scab',
-      plantCategory: 'apple')
+      plantCategory: 'apple'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Northern Corn Leaf Blight (NCLB):Causal Agent: Exserohilum turcicum fungus.Symptoms: Elliptical lesions with tan centers and dark borders on leaves.Southern Corn Leaf Blight (SCLB):Causal Agent: Bipolaris maydis fungus.Symptoms: Oval lesions with tan centers on leaves, often leading to extensive damage.',
+      diseaseCauses:
+      'Airborne Spores: Blight spreads through spores carried by wind or rain.Crop Residue: Residue from infected plants can harbor the pathogens. ',
+      diseasePrevention:
+      'Crop Rotation: Avoid continuous planting of corn to break the disease cycle.Resistant Varieties: Select corn varieties with resistance to the prevalent type of blight.Genetic Resistance: Support breeding efforts for resistant traits to enhance long-term control.',
+      diseaseRecovery:
+      'Fungicide Application: Apply fungicides when conditions favor disease development.Cultural Practices:Remove and destroy infected crop residues post-harvest.Post-Harvest Clean-Up:',
+      diseaseName: 'Blight',
+      plantCategory: 'corn'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Gray Leaf Spot (GLS) is a foliar disease caused by the fungus Cercospora zeae-maydis. Primarily affects corn plants, leading to significant yield losses if not managed properly',
+      diseaseCauses:
+      'Fungus Cercospora zeae-maydis is the causal agent. Thrives in warm and humid conditions.High plant density and continuous corn cultivation contribute to its spread.',
+      diseasePrevention:
+      'Crop rotation with non-host plants. Plant resistant or tolerant corn varieties.Proper spacing for air circulation.',
+      diseaseRecovery:
+      'Fungicidal Treatments: Apply recommended fungicides based on disease severity.Cultural Practices: Adjust planting dates to avoid peak disease periods..Cultural Practices: Adjust irrigation to reduce leaf wetness and promote soil drainage.Enhance air circulation, reduce humidity.Remove and destroy infected plant residues.Post-Harvest Clean-Up: Remove and destroy infected plant residues post-harvest, Reduce overwintering potential.',
+      diseaseName: 'Gray Leaf Spot',
+      plantCategory: 'corn'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Common Rust is a foliar disease caused by the fungus Puccinia sorghi.Characterized by small, circular to elongated reddish-brown pustules on both upper and lower leaf surfaces.',
+      diseaseCauses:
+      'Fungal Pathogen: Common Rust in corn is caused by the fungus Puccinia sorghi.Warmth: Optimal temperatures for Common Rust development range between 59°F to 77°F (15°C to 25°C). ',
+      diseasePrevention:
+      'Plant resistant corn varieties. Rotate crops to disrupt the disease cycle.Timely planting to avoid extended humidity periods.',
+      diseaseRecovery:
+      'Fungicide Application: Apply fungicides labeled for rust control.Harvest Management: Harvest at appropriate maturity to minimize rust impact on grain quality.Post-Harvest Clean-Up: Remove and destroy infected residues.Reduce inoculum for the next season.Adjust Planting:Consider adjusting planting dates to avoid conducive conditions',
+      diseaseName: 'Common Rust',
+      plantCategory: 'corn'),
+
+
 ];

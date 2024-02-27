@@ -135,7 +135,7 @@ class PredictedResultPage extends StatelessWidget {
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
+                                  backgroundColor: Colors.green,
                                 ),
                                 child: Row(
                                   children: [
