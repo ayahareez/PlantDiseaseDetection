@@ -144,4 +144,15 @@ List<DiseaseInformationModel> diseaseInfo = [
       'Fungicide Application:Preventive Sprays: Apply fungicides preventively, especially during periods of high disease pressure.Systemic Fungicides: Consider systemic fungicides for long-lasting protection.Copper Applications: Use copper-based fungicides, following recommended rates and schedules.',
       diseaseName: 'Leaf_blight (Isariopsis Leaf Spot)',
       plantCategory: 'grape'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Fungi: Primarily caused by Phaeoacremonium spp. and Phaeomoniella chlamydospora.',
+      diseaseCauses:
+      'Fungal Pathogens:Primary Agents: Phaeoacremonium spp. and Phaeomoniella chlamydospora.Environmental Factors:Moisture Stress: Water stress in vines can contribute to disease development.',
+      diseasePrevention:
+      'Pruning Practices: Employ careful and clean pruning techniques to minimize wounds.Cultural Practices: Optimize vineyard management to reduce stress and enhance vine health.Sanitation: Remove and destroy infected wood to limit the spread.',
+      diseaseRecovery:
+      'Pruning Practices:Clean and Careful Pruning: Minimize wounds and ensure proper healing to prevent pathogen entry.Fungicide Application: Apply fungicides preventively; however, complete control is challenging.Careful Selection: Choose cover crops that do not host the Esca pathogens.',
+      diseaseName: 'Esca (Black Measles)',
+      plantCategory: 'grape'),
 ];
