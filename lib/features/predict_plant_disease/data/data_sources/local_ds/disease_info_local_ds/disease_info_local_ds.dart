@@ -188,4 +188,15 @@ List<DiseaseInformationModel> diseaseInfo = [
       'Fungicide Applications:Preventive Sprays: Apply fungicides early in the growing season as a preventive measure.Crop Rotation:Diversify Planting Locations: Rotate tomatoes with non-host crops to break the disease cycle.',
       diseaseName: 'Early blight',
       plantCategory: 'tomato'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Water-Soaked Lesions: Dark, water-soaked lesions on leaves, stems, and fruits.White Fungal Growth: White mold may appear on the undersides of leaves, especially during humid conditions.',
+      diseaseCauses:
+      'Phytophthora infestans is the primary pathogen causing Late Blight.Cool and Wet: Thrives in cool, wet conditions, with rapid disease development during rainy periods.',
+      diseasePrevention:
+      'Crop Rotation:Break the disease cycle by planting tomatoes in different locations each season.Resistant Varieties: Plant tomatoes with genetic resistance to Late Blight.',
+      diseaseRecovery:
+      'Fungicide Applications:Apply fungicides early in the growing season and continue on a regular schedule.Adjusting Irrigation: Use drip irrigation to avoid wetting leaves or irrigate early in the day.',
+      diseaseName: 'Late blight',
+      plantCategory: 'tomato'),
 ];
