@@ -199,4 +199,60 @@ List<DiseaseInformationModel> diseaseInfo = [
       'Fungicide Applications:Apply fungicides early in the growing season and continue on a regular schedule.Adjusting Irrigation: Use drip irrigation to avoid wetting leaves or irrigate early in the day.',
       diseaseName: 'Late blight',
       plantCategory: 'tomato'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Yellow spots and mottling on upper leaf surfaces.Distinctive Spots: Dark, fuzzy patches on the lower leaf surface.',
+      diseaseCauses:
+      'Pathogen: Pseudocercospora fuligena is the fungus responsible for Leaf Mold.High Humidity: Thrives in conditions of high humidity.Moderate Temperatures: Optimal development occurs in moderate temperatures.',
+      diseasePrevention:
+      'Resistant Varieties:Plant tomato varieties with documented resistance to Leaf Mold.Soil Health Management:Provide balanced nutrition and ensure optimal soil .',
+      diseaseRecovery:
+      'Fungicide Applications:Apply fungicides preventively to manage Leaf Mold.Leaf Removal:Remove and destroy infected leaves promptly.Copper-Based Sprays:Utilize copper-based fungicides with anti-fungal properties.',
+      diseaseName: 'Leaf Mold',
+      plantCategory: 'tomato'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Symptoms:Circular Spots: Small, dark spots with a white or gray center on lower leaves.Yellowing: Yellow halos surrounding the spots as the infection progresses.Leaf Drop: Severe infections can lead to premature leaf drop.',
+      diseaseCauses:
+      'Pathogen: Septoria lycopersici is the fungus responsible for Septoria Leaf Spot.Environmental Conditions:Warm and Humid: Thrives in warm and humid conditions.Splash Dispersal: Spores spread through water splashing on infected plants.',
+      diseasePrevention:
+      'Resistant Varieties:Plant tomato varieties with resistance to Septoria Leaf Spot.Soil Health Management:Provide balanced nutrition and ensure optimal soil conditions.',
+      diseaseRecovery:
+      'Fungicide Applications:Begin fungicide application early in the growing season.Rotate between different classes of fungicides to prevent resistance.Leaf Removal:Regularly inspect plants and remove affected leaves to prevent further spread.',
+      diseaseName: 'Septoria leaf spot',
+      plantCategory: 'tomato'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: The two-spotted spider mite (Tetranychus urticae) is a microscopic arachnid that feeds on plant sap.Tiny Specks: Presence of tiny specks on leaves, often resembling small dots.Leaves may exhibit bronzing or yellowing due to sap-sucking.',
+      diseaseCauses:
+      'Pruning Practices: Excessive pruning that stresses the plant may create favorable conditions for mite development.Environmental Conditions:Hot and Dry Climate: Two-spotted spider mites thrive in warm and dry conditions.Mitigating Dust:Regularly spraying plants with water can help mitigate dust and deter spider mites.',
+      diseasePrevention:
+      'Environmental Modifications:Increase Humidity: Spider mites thrive in dry conditions, so increasing humidity can be unfavorable for them.Mulching: Applying organic mulch can help retain soil moisture and create a less favorable environment for mites.',
+      diseaseRecovery:
+      'Beneficial Insects:Introduce beneficial insects that feed on spider mites.Leaf Cleaning: Washing leaves can physically remove mites and disrupt their webbing.Natural Repellent:Neem oil has natural pesticidal properties and can be effective against spider mites.',
+      diseaseName: 'Spider Mites (Two spotted spider mite)',
+      plantCategory: 'tomato'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Symptoms:Target-Like Lesions: Circular lesions with concentric rings resembling a target.Yellowing and Browning: Lesions may turn yellow or brown, causing defoliation.Favorable Conditions: Thrives in warm and humid conditions.',
+      diseaseCauses:
+      'Pathogen: Corynespora cassiicola is the fungus responsible for Target Spot in tomatoes.Environmental Conditions:Warm and Humid: Target Spot is favored by warm temperatures and high humidity.',
+      diseasePrevention:
+      'Resistant Varieties:Choose cultivars known for their resistance to Corynespora cassiicola.Proper Spacing and Pruning:Enhance air circulation to reduce humidity around plants.',
+      diseaseRecovery:
+      'Fungicide Applications:Begin fungicide application early in the growing season.Rotate between different classes of fungicides to prevent resistance.Copper-Based Sprays:Apply copper sprays preventively, especially during periods conducive to Target Spot development.',
+      diseaseName: 'Target Spot',
+      plantCategory: 'tomato'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Symptoms:Target-Like Lesions: Circular lesions with concentric rings resembling a target.Yellowing and Browning: Lesions may turn yellow or brown, causing defoliation.Favorable Conditions: Thrives in warm and humid conditions.',
+      diseaseCauses:
+      'Pathogen: Corynespora cassiicola is the fungus responsible for Target Spot in tomatoes.Environmental Conditions:Warm and Humid: Target Spot is favored by warm temperatures and high humidity.',
+      diseasePrevention:
+      'Resistant Varieties:Choose cultivars known for their resistance to Corynespora cassiicola.Proper Spacing and Pruning:Enhance air circulation to reduce humidity around plants.',
+      diseaseRecovery:
+      'Fungicide Applications:Begin fungicide application early in the growing season.Rotate between different classes of fungicides to prevent resistance.Copper-Based Sprays:Apply copper sprays preventively, especially during periods conducive to Target Spot development.',
+      diseaseName: 'Target Spot',
+      plantCategory: 'tomato'),
+
 ];
