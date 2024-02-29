@@ -245,14 +245,25 @@ List<DiseaseInformationModel> diseaseInfo = [
       plantCategory: 'tomato'),
   const DiseaseInformationModel(
       diseaseOverview:
-      'Description: Symptoms:Target-Like Lesions: Circular lesions with concentric rings resembling a target.Yellowing and Browning: Lesions may turn yellow or brown, causing defoliation.Favorable Conditions: Thrives in warm and humid conditions.',
+      'Description:Symptoms:Leaf Curling: Leaves exhibit upward curling and may become stiff.Stunted Growth: Affected plants may exhibit stunted growth.Leaf Deformities: Leaf distortion and reduced fruit production.',
       diseaseCauses:
-      'Pathogen: Corynespora cassiicola is the fungus responsible for Target Spot in tomatoes.Environmental Conditions:Warm and Humid: Target Spot is favored by warm temperatures and high humidity.',
+      'Pathogen: Yellow Leaf Curl Virus is primarily caused by whiteflies carrying begomoviruses, such as Tomato yellow leaf curl virus (TYLCV).High Humidity:Prolonged periods of high humidity create an ideal environment for Target Spot development.',
       diseasePrevention:
-      'Resistant Varieties:Choose cultivars known for their resistance to Corynespora cassiicola.Proper Spacing and Pruning:Enhance air circulation to reduce humidity around plants.',
+      'Resistant Varieties:Planting Choices: Choose tomato varieties with resistance to Target Spot.Avoid Overhead Irrigation:Drip Irrigation: Use drip irrigation or water at the base of plants to minimize water on foliage.',
       diseaseRecovery:
-      'Fungicide Applications:Begin fungicide application early in the growing season.Rotate between different classes of fungicides to prevent resistance.Copper-Based Sprays:Apply copper sprays preventively, especially during periods conducive to Target Spot development.',
-      diseaseName: 'Target Spot',
+      'Fungicide Applications:Curative and Preventive: Apply fungicides with both curative and preventive properties, following recommended application schedules.Rotate Crops:Disease Break: Rotate tomatoes with non-host crops to break the disease cycle and reduce soilborne inoculum Remove Infected Debris:Sanitation: Remove and destroy infected plant debris to reduce the source of inoculum.',
+      diseaseName: 'Yellow Leaf Curl Virus',
+      plantCategory: 'tomato'),
+  const DiseaseInformationModel(
+      diseaseOverview:
+      'Description: Symptoms:Mottled Leaves: Leaves exhibit a mosaic pattern with light and dark green areas.Stunted Growth: Infected plants may show stunted growth.Fruit Symptoms: Fruits may display mottling, discoloration, or distortion.',
+      diseaseCauses:
+      'Pathogen: Tomato Mosaic Virus (ToMV) belongs to the Tobamovirus genus and can affect tomatoes.Infected Plants: The primary source of Tomato Mosaic Virus is infected plants.Seeds: The virus can be transmitted through infected seeds, leading to the spread of the virus to new plantings.',
+      diseasePrevention:
+      'Genetic Resistance:Resistant Varieties: Plant tomato varieties with documented resistance to Tomato .Avoid Tobacco Planting:Plant Separation: Avoid planting tomatoes near tobacco plants to reduce the risk of cross-infection.Environmental Modifications:Improve Air Circulation: Enhance airflow around plants to reduce humidity and discourage virus spread.',
+      diseaseRecovery:
+      'Fungicide Application (for Secondary Infections):Curative Measures: In the case of secondary fungal infections due to weakened plants, consider appropriate fungicide application.Remove Infected Plants:Prompt Removal: Remove and destroy infected plants immediately to prevent further spread of the virus.Isolation and Quarantine:Isolate Infected Plants: Keep infected plants isolated from healthy ones to prevent virus transmission.',
+      diseaseName: 'Mosaic Virus',
       plantCategory: 'tomato'),
 
 ];
