@@ -255,13 +255,26 @@ class PredictedResultPage extends StatelessWidget {
                         //   ],
                         // ),
                         if (state.disease.className == 'Healthy')
-                          Lottie.asset(
-                            'assets/animations/Animation - 1709044285025.json',
-                            // Replace with the actual path to your Lottie JSON file
-                            width: 250,
-                            height: 250,
-                            // Other options...
-                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Lottie.asset(
+                                'assets/animations/Animation - 1716919740547 (1).json',
+                                width: 250,
+                                height: 250,
+                              ),
+                              Text(
+                                'Your plant is flourishing and healthy! 🌿 Keep up the great care!',
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center, // Make sure the text is centered
+                              ),
+                            ],
+                          )
+
                       ],
                     ),
                   );

@@ -24,9 +24,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
     'Corn',
     'Cherry',
     'Wheat',
-    'Tomato',
     'Pepper',
-    'Cotton',
   ];
 
   // List of image paths corresponding to each plant
@@ -39,9 +37,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
     'assets/images/corn.png',
     'assets/images/cherry.png',
     'assets/images/wheat.png',
-    'assets/images/tomato.png',
     'assets/images/pepper.png',
-    'assets/images/cotton.png',
   ];
 
   List<String> filteredPlantNames = [];
@@ -74,7 +70,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
     setState(() {
       selectedPlant = plantType;
       isPlantSelected =
-          false; // Update isPlantSelected when a plant is selected
+          false;
     });
   }
 
@@ -82,7 +78,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
     setState(() {
       selectedPlant = '';
       isPlantSelected =
-          true; // Update isPlantSelected when a plant is deselected
+          true;
     });
   }
 
@@ -94,7 +90,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
           title: Text(
             "Bezra",
             style: TextStyle(
-              fontWeight: FontWeight.bold, // Making text bold
+              fontWeight: FontWeight.bold,
             ),
           ),
           actions: [
