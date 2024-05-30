@@ -54,7 +54,8 @@ dependencies:
   firebase_storage:
   images_picker:
   firebase_app_check:
-
+  google_generative_ai:
+  intl:
 
 dev_dependencies:
   flutter_test:
