@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:plant_disease/core/widgets/loading_widget.dart';
 import 'package:plant_disease/features/predict_plant_disease/data/models/plant_model.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/pages/chatPot.dart';
 import '../../../../core/app_theme.dart';
 import '../bloc/disease_bloc/disease_bloc.dart';
 import '../bloc/disease_info_bloc/disease_info_bloc.dart';
@@ -20,6 +21,17 @@ class PredictedResultPage extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               title: const Text('The Predicted Result'),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ChatScreen()),
+                    );
+                  },
+                  icon: Icon(Icons.chat), // Using the chat icon
+                ),
+              ],
             ),
             body: BlocBuilder<DiseaseBloc, DiseaseState>(
               builder: (context, state) {
