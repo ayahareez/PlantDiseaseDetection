@@ -38,9 +38,9 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (_) => const PlantPhotoPage()));
           }
-          if (state is AuthError) {
-            showToast("An error occurred: ${state.error}");
-          }
+          // if (state is AuthError) {
+          //   showToast("An error occurred: ${state.error}");
+          // }
         },
         builder: (context, state) {
           print(state);

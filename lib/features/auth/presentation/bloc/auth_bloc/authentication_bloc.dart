@@ -44,13 +44,13 @@ class AuthenticationBloc
         Fluttertoast.showToast(
           msg: 'Invalid Data,Please try again or Sign Up',
           toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
+          gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
+          backgroundColor: Colors.white,
+          textColor: Colors.red,
           fontSize: 16.0,
         );
-        emit(AuthError(error: error.toString()));
+        emit(AuthError());
       }
     });
   }

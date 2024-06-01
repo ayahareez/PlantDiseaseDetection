@@ -4,7 +4,6 @@ import 'package:lottie/lottie.dart';
 import 'package:plant_disease/core/widgets/loading_widget.dart';
 import 'package:plant_disease/features/predict_plant_disease/data/models/plant_model.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/chatPot.dart';
-import '../../../../core/app_theme.dart';
 import '../bloc/disease_bloc/disease_bloc.dart';
 import '../bloc/disease_info_bloc/disease_info_bloc.dart';
 import '../widgets/message_display_widget.dart';
@@ -151,9 +150,13 @@ class PredictedResultPage extends StatelessWidget {
                                 );
                               }
                               if (state is LoadedDiseaseInfoState) {
+                                print("${state.diseaseInformation}" +
+                                    '0000000000000');
                                 List<String> diseaseOverview = state
                                     .diseaseInformation.diseaseOverview
                                     .split('.');
+                                print("${diseaseOverview} " +
+                                    "0000000000000000000000");
                                 List<String> diseaseCauses = state
                                     .diseaseInformation.diseaseCauses
                                     .split('.');
@@ -183,7 +186,8 @@ class PredictedResultPage extends StatelessWidget {
                                         children: <Widget>[
                                           ListTile(
                                             title: Text(
-                                              '${diseaseOverview[0]}.\n${diseaseOverview[1]}.\n${diseaseOverview[2]}.\n${diseaseOverview[3]}',
+                                              //${diseaseOverview[0]}.\n${diseaseOverview[1]}.\n${diseaseOverview[2]}.\n${diseaseOverview[3]}
+                                              '${diseaseOverview.join('.\n')}',
                                               style:
                                                   const TextStyle(fontSize: 22),
                                             ),
@@ -203,7 +207,7 @@ class PredictedResultPage extends StatelessWidget {
                                           // الشرح أو المعلومات الإضافية
                                           ListTile(
                                             title: Text(
-                                              '${diseaseCauses[0]}.\n${diseaseCauses[1]}.\n${diseaseCauses[2]}',
+                                              '${diseaseCauses.join('.\n')}',
                                               style:
                                                   const TextStyle(fontSize: 22),
                                             ),
@@ -222,7 +226,7 @@ class PredictedResultPage extends StatelessWidget {
                                         children: <Widget>[
                                           ListTile(
                                             title: Text(
-                                              '${diseasePrevention[0]}.\n${diseasePrevention[1]}.\n${diseasePrevention[2]}.\n${diseasePrevention[3]}.',
+                                              '${diseasePrevention.join('.\n')}',
                                               style:
                                                   const TextStyle(fontSize: 22),
                                             ),
@@ -242,7 +246,7 @@ class PredictedResultPage extends StatelessWidget {
                                           // الشرح أو المعلومات الإضافية
                                           ListTile(
                                             title: Text(
-                                              '${diseaseRecovery[0]}.\n${diseaseRecovery[1]}.\n${diseaseRecovery[2]}.',
+                                              '${diseaseRecovery.join('.\n')}',
                                               style:
                                                   const TextStyle(fontSize: 22),
                                             ),

@@ -25,9 +25,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
     'Corn',
     'Cherry',
     'Wheat',
-    'Tomato',
     'Pepper',
-    'Cotton',
   ];
 
   // List of image paths corresponding to each plant
@@ -40,9 +38,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
     'assets/images/corn.png',
     'assets/images/cherry.png',
     'assets/images/wheat.png',
-    'assets/images/tomato.png',
     'assets/images/pepper.png',
-    'assets/images/cotton.png',
   ];
 
   List<String> filteredPlantNames = [];
@@ -99,22 +95,21 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
             ),
           ),
           actions: [
-
-              IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ChatScreen()),
-                  );
-                },
-                icon: Icon(Icons.chat), // Using the chat icon
-              ),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ChatScreen()),
+                );
+              },
+              icon: Icon(Icons.chat), // Using the chat icon
+            ),
             BlocListener<AuthenticationBloc, AuthenticationState>(
               listener: (context, state) {
                 if (state is UnAuthorized) {
                   Navigator.popUntil(
                     context,
-                        (_) => false,
+                    (_) => false,
                   );
                   Navigator.push(
                       context,
