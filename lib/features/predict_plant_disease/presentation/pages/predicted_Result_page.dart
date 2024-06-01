@@ -155,6 +155,7 @@ class PredictedResultPage extends StatelessWidget {
                                 List<String> diseaseOverview = state
                                     .diseaseInformation.diseaseOverview
                                     .split('.');
+                                print('object');
                                 print("${diseaseOverview} " +
                                     "0000000000000000000000");
                                 List<String> diseaseCauses = state

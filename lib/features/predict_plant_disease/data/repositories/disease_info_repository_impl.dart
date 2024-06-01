@@ -39,7 +39,7 @@ class DiseaseInfoRepositoryImpl implements DiseaseInfoRepository {
       //     diseaseName: 'Late Blight',
       //     plantCategory: 'potato');
 
-      // print(diseaseInformationModel);
+      print(diseaseInformationModel);
       // DiseaseInformationModel? diseaseInformationModel;
       // for (int i = 0; i < diseaseInfo.length - 1; i++) {
       //   if (disease.plantName == diseaseInfo[i].plantCategory &&
