@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:plant_disease/features/predict_plant_disease/data/models/plant_model.dart';
 import 'package:plant_disease/features/predict_plant_disease/domain/entities/disease.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/predicted_Result_page.dart';
@@ -25,99 +26,99 @@ Future<void> showInstructionsDialog(
       return StatefulBuilder(
         builder: (BuildContext context, StateSetter setStateInDialog) {
           return AlertDialog(
-            title: const Text(
-              'Photo Capture Instructions',
+            title: const LocaleText(
+              'photo_instructions',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             content: const SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    '1. Capture a Single Leaf:',
+                  LocaleText(
+                    'instructions1',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  Text(
-                    '- Take a picture of a single leaf from the plant.',
+                  LocaleText(
+                    'instructions1.2',
                     style: TextStyle(
                         color: Colors.red,
                         fontWeight: FontWeight.bold,
                         fontSize: 15),
                   ),
-                  Text(
-                    '- Make sure it is a clear image and not blurry.',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    '2. Avoid Clutter:',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  Text(
-                    '- Ensure there is no clutter in the background to help the model focus on the leaf.',
+                  LocaleText(
+                    'instructions1.3',
                     style: TextStyle(
                         color: Colors.red,
                         fontWeight: FontWeight.bold,
                         fontSize: 15),
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    '3. No Overlapping Leaves:',
+                  LocaleText(
+                    'instructions2',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  Text(
-                    '- Do not capture overlapping leaves; the model works best with a single, isolated leaf.',
+                  LocaleText(
+                    'instructions2.1',
                     style: TextStyle(
                         color: Colors.red,
                         fontWeight: FontWeight.bold,
                         fontSize: 15),
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    '4. Corn Plant Specifics:',
+                  LocaleText(
+                    'instructions3',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  Text(
-                    '- If you are capturing a corn plant, focus on capturing a part of the leaf, not the entire leaf.',
+                  LocaleText(
+                    'instructions3.1',
                     style: TextStyle(
                         color: Colors.red,
                         fontWeight: FontWeight.bold,
                         fontSize: 15),
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    '5. Good Lighting:',
+                  LocaleText(
+                    'instructions4',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  Text(
-                    '- Ensure there is sufficient lighting for a clear image.',
+                  LocaleText(
+                    'instructions4.1',
                     style: TextStyle(
                         color: Colors.red,
                         fontWeight: FontWeight.bold,
                         fontSize: 15),
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    '6. No Distortions:',
+                  LocaleText(
+                    'instructions5',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  Text(
-                    '- Avoid any distortions in the image; a straightforward picture works best.',
+                  LocaleText(
+                    'instructions5.1',
                     style: TextStyle(
                         color: Colors.red,
                         fontWeight: FontWeight.bold,
                         fontSize: 15),
                   ),
                   SizedBox(height: 10),
-                  Text(
-                    '7. High-Quality Image:',
+                  LocaleText(
+                    'instructions6',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  Text(
-                    '- Capture the image in high resolution for accurate disease prediction.',
+                  LocaleText(
+                    'instructions6.1',
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
+                  ),
+                  SizedBox(height: 10),
+                  LocaleText(
+                    'instructions7',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  LocaleText(
+                    'instructions7.1',
                     style: TextStyle(
                         color: Colors.red,
                         fontWeight: FontWeight.bold,
@@ -162,8 +163,8 @@ Future<void> showInstructionsDialog(
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          'Take a Photo',
+                        LocaleText(
+                          'take_photo',
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,

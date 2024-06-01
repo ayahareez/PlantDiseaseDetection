@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:lottie/lottie.dart';
 import 'package:plant_disease/core/widgets/loading_widget.dart';
 import 'package:plant_disease/features/predict_plant_disease/data/models/plant_model.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/pages/chatPot.dart';
 import '../../../../core/app_theme.dart';
 import '../bloc/disease_bloc/disease_bloc.dart';
 import '../bloc/disease_info_bloc/disease_info_bloc.dart';
@@ -19,7 +21,18 @@ class PredictedResultPage extends StatelessWidget {
         return SafeArea(
           child: Scaffold(
             appBar: AppBar(
-              title: const Text('The Predicted Result'),
+              title: const LocaleText('result'),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ChatScreen()),
+                    );
+                  },
+                  icon: Icon(Icons.chat), // Using the chat icon
+                ),
+              ],
             ),
             body: BlocBuilder<DiseaseBloc, DiseaseState>(
               builder: (context, state) {
@@ -70,9 +83,9 @@ class PredictedResultPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(16),
                                     border: Border.all(
                                       color: Colors
-                                          .black, // Set your desired border color
+                                          .black,
                                       width:
-                                          2.0, // Set your desired border width
+                                          2.0,
                                     ),
                                   ),
                                   child: Image.file(
@@ -88,31 +101,62 @@ class PredictedResultPage extends StatelessWidget {
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Text(
-                                      'Type: ${state.disease.className}',
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500),
+                                    Row(
+                                      children: [
+                                        LocaleText(
+                                          'type',
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        Text(
+                                          '${state.disease.className}',
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ],
                                     ),
                                     const SizedBox(
                                       height: 8,
                                     ),
-                                    Text(
-                                      'Certainty: ${(state.disease.confidence * 100).toStringAsFixed(1)}%',
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500),
+                                    Row(
+                                      children: [
+                                        LocaleText(
+                                          'certainty',
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        Text(
+                                          '${(state.disease.confidence * 100).toStringAsFixed(1)}%',
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ],
                                     ),
                                     const SizedBox(
                                       height: 8,
                                     ),
                                     if (state.disease.className != 'Healthy')
-                                      Text(
-                                        'Threat Level: ${state.disease.confidence * 100 > 90 ? 'high' : state.disease.confidence * 100 < 80 && state.disease.confidence * 100 > 60 ? 'medium' : 'low'}',
-                                        style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                                      Row(
+                                        children: [
+                                          LocaleText(
+                                            'threat_level',
+                                            style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          Text(
+                                            '${state.disease.confidence * 100 > 90 ? 'high' : state.disease.confidence * 100 < 80 && state.disease.confidence * 100 > 60 ? 'medium' : 'low'}',
+                                            style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
                                       )
                                   ],
                                 ),

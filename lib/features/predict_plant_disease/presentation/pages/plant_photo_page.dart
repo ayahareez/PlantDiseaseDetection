@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:plant_disease/features/auth/presentation/bloc/auth_bloc/authentication_bloc.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/widgets/instruction_dialog.dart';
-
-import '../../../auth/presentation/pages/login_page.dart';
+import 'package:plant_disease/features/auth/presentation/pages/login_page.dart';
+import 'chatPot.dart';
+import 'localization.dart';  // استيراد صفحة Localization
 
 class PlantPhotoPage extends StatefulWidget {
   const PlantPhotoPage({Key? key}) : super(key: key);
@@ -69,16 +71,14 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
   void selectPlant(String plantType) {
     setState(() {
       selectedPlant = plantType;
-      isPlantSelected =
-          false;
+      isPlantSelected = false;
     });
   }
 
   void deselectPlant() {
     setState(() {
       selectedPlant = '';
-      isPlantSelected =
-          true;
+      isPlantSelected = true;
     });
   }
 
@@ -87,19 +87,37 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            "Bezra",
+          title: const LocaleText(
+            "bezra",
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),
           actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ChatScreen()),
+                );
+              },
+              icon: Icon(Icons.chat), // Using the chat icon
+            ),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Localization()),
+                );
+              },
+              icon: Icon(Icons.language),
+            ),
             BlocListener<AuthenticationBloc, AuthenticationState>(
               listener: (context, state) {
                 if (state is UnAuthorized) {
                   Navigator.popUntil(
                     context,
-                    (_) => false,
+                        (_) => false,
                   );
                   Navigator.push(
                       context,
@@ -112,7 +130,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                     context.read<AuthenticationBloc>().add(SignOutEvent());
                   },
                   icon: const Icon(Icons.logout)),
-            )
+            ),
           ],
         ),
         body: Column(
@@ -153,7 +171,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                 itemBuilder: (context, index) {
                   final plantType = filteredPlantNames[index];
                   final plantIconPath = filteredPlantIcons[
-                      index]; // Get the corresponding image path
+                  index]; // Get the corresponding image path
                   return GestureDetector(
                     onTap: () {
                       if (selectedPlant == plantType) {
@@ -164,7 +182,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                     },
                     child: Container(
                       padding:
-                          EdgeInsets.all(8), // Add padding to the Container
+                      EdgeInsets.all(8), // Add padding to the Container
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: selectedPlant == plantType
@@ -176,9 +194,9 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                         children: [
                           Image.asset(plantIconPath,
                               width: 60,
-                              height: 60), // Increase size of the image
+                              height: 60),
                           SizedBox(height: 4),
-                          Text(
+                          LocaleText(
                             plantType,
                             style: TextStyle(
                                 fontSize: 16,
@@ -210,10 +228,10 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                       style: TextStyle(
                           fontSize: 20, color: Colors.red), // Red star
                     ),
-                    Text(
-                      'Upload a Photo Of Your Plant\'s leaf ',
+                    const LocaleText(
+                      'upload_photo',
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                      TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
@@ -235,16 +253,16 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                     onPressed: isPlantSelected
                         ? null
                         : () {
-                            showInstructionsDialog(
-                                context, setState, selectedPlant, true);
-                          },
+                      showInstructionsDialog(
+                          context, setState, selectedPlant, true);
+                    },
                     icon: Icon(
                       Icons.camera_alt,
                       size: 55,
                       color: isPlantSelected
                           ? Colors.grey
                           : Colors
-                              .blue, // Disable the icon if a plant is selected
+                          .blue, // Disable the icon if a plant is selected
                     ),
                   ),
                 ),
@@ -260,16 +278,16 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                     onPressed: isPlantSelected
                         ? null
                         : () {
-                            showInstructionsDialog(
-                                context, setState, selectedPlant, false);
-                          },
+                      showInstructionsDialog(
+                          context, setState, selectedPlant, false);
+                    },
                     icon: Icon(
                       Icons.photo,
                       size: 55,
                       color: isPlantSelected
                           ? Colors.grey
                           : Colors.green[
-                              500], // Disable the icon if a plant is selected
+                      500], // Disable the icon if a plant is selected
                     ),
                   ),
                 ),
@@ -277,13 +295,6 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
             )
           ],
         ),
-        // bottomNavigationBar: BottomNavigationBar(
-        //   items: [
-        //     BottomNavigationBarItem(icon: Icon(Icons.home)),
-        //     BottomNavigationBarItem(icon: Icon(Icons.hive_sharp)),
-        //     BottomNavigationBarItem(icon: Icon(Icons.energy_savings_leaf))
-        //   ],
-        // ),
       ),
     );
   }

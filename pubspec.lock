@@ -334,6 +334,19 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  flutter_locales:
+    dependency: "direct main"
+    description:
+      name: flutter_locales
+      sha256: "85567c5361f555cf862245a2c687b817781774e215df5ee787cac11d54141494"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
+  flutter_localizations:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -376,6 +389,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.6.7"
+  google_generative_ai:
+    dependency: "direct main"
+    description:
+      name: google_generative_ai
+      sha256: "3de23ccdd2ae2035345f0592a1159a097e8b0a12ccc740a78a123e33cfae3c12"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.2"
   http:
     dependency: "direct main"
     description:
@@ -472,6 +493,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0+1"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.1"
   js:
     dependency: transitive
     description:

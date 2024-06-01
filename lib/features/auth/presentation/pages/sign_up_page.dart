@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:lottie/lottie.dart';
 import 'package:plant_disease/features/auth/presentation/pages/login_page.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_photo_page.dart';
@@ -35,8 +36,8 @@ class SignUpPage extends StatelessWidget {
                       height: 250,
                     ),
                   ),
-                  const Text(
-                    'Sign up',
+                  const LocaleText(
+                    'sign_up',
                     style: TextStyle(
                         fontSize: 40.0,
                         fontWeight: FontWeight.bold,
@@ -150,8 +151,8 @@ class SignUpPage extends StatelessWidget {
                                       const PlantPhotoPage()));
                         }
                       },
-                      child: const Text(
-                        'Sign up',
+                      child: const LocaleText(
+                        'sign_up',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 24,
@@ -172,12 +173,12 @@ class SignUpPage extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Already have an Account?  ',
+                          LocaleText('have_account',
                               style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.black,
                                   fontFamily: 'MyFont')),
-                          Text('Login',
+                          LocaleText('heading',
                               style: TextStyle(
                                   fontSize: 18,
                                   color: Color(0xff276E23),
