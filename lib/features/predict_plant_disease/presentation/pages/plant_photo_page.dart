@@ -103,6 +103,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
               },
               icon: Icon(Icons.chat), // Using the chat icon
             ),
+
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -112,12 +113,13 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
               },
               icon: Icon(Icons.language),
             ),
+
             BlocListener<AuthenticationBloc, AuthenticationState>(
               listener: (context, state) {
                 if (state is UnAuthorized) {
                   Navigator.popUntil(
                     context,
-                        (_) => false,
+                    (_) => false,
                   );
                   Navigator.push(
                       context,

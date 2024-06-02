@@ -3,14 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:plant_disease/core/image_picker_helper.dart';
+import 'package:plant_disease/core/networks/network_info.dart';
 import 'package:plant_disease/features/predict_plant_disease/data/models/plant_model.dart';
-import 'package:plant_disease/features/predict_plant_disease/domain/entities/disease.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/bloc/disease_bloc/disease_bloc.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/predicted_Result_page.dart';
-
-import '../../../../core/image_picker_helper.dart';
-import '../../../../core/storage_helper.dart';
-//import '../bloc/disease_bloc.dart';
-import '../bloc/disease_bloc/disease_bloc.dart';
 
 Future<void> showInstructionsDialog(
     BuildContext context,
@@ -26,109 +23,144 @@ Future<void> showInstructionsDialog(
       return StatefulBuilder(
         builder: (BuildContext context, StateSetter setStateInDialog) {
           return AlertDialog(
-            title: const LocaleText(
-              'photo_instructions',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            content: const SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  LocaleText(
-                    'instructions1',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  LocaleText(
-                    'instructions1.2',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                  LocaleText(
-                    'instructions1.3',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                  SizedBox(height: 10),
-                  LocaleText(
-                    'instructions2',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  LocaleText(
-                    'instructions2.1',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                  SizedBox(height: 10),
-                  LocaleText(
-                    'instructions3',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  LocaleText(
-                    'instructions3.1',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                  SizedBox(height: 10),
-                  LocaleText(
-                    'instructions4',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  LocaleText(
-                    'instructions4.1',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                  SizedBox(height: 10),
-                  LocaleText(
-                    'instructions5',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  LocaleText(
-                    'instructions5.1',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                  SizedBox(height: 10),
-                  LocaleText(
-                    'instructions6',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  LocaleText(
-                    'instructions6.1',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                  SizedBox(height: 10),
-                  LocaleText(
-                    'instructions7',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  LocaleText(
-                    'instructions7.1',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                ],
+// <<<<<<< HEAD
+//             title: const LocaleText(
+//               'photo_instructions',
+//               style: TextStyle(fontWeight: FontWeight.bold),
+//             ),
+//             content: const SingleChildScrollView(
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: <Widget>[
+//                   LocaleText(
+//                     'instructions1',
+//                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+//                   ),
+//                   LocaleText(
+//                     'instructions1.2',
+//                     style: TextStyle(
+//                         color: Colors.red,
+//                         fontWeight: FontWeight.bold,
+//                         fontSize: 15),
+//                   ),
+//                   LocaleText(
+//                     'instructions1.3',
+//                     style: TextStyle(
+//                         color: Colors.red,
+//                         fontWeight: FontWeight.bold,
+//                         fontSize: 15),
+//                   ),
+//                   SizedBox(height: 10),
+//                   LocaleText(
+//                     'instructions2',
+//                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+//                   ),
+//                   LocaleText(
+//                     'instructions2.1',
+//                     style: TextStyle(
+//                         color: Colors.red,
+//                         fontWeight: FontWeight.bold,
+//                         fontSize: 15),
+//                   ),
+//                   SizedBox(height: 10),
+//                   LocaleText(
+//                     'instructions3',
+//                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+//                   ),
+//                   LocaleText(
+//                     'instructions3.1',
+//                     style: TextStyle(
+//                         color: Colors.red,
+//                         fontWeight: FontWeight.bold,
+//                         fontSize: 15),
+//                   ),
+//                   SizedBox(height: 10),
+//                   LocaleText(
+//                     'instructions4',
+//                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+//                   ),
+//                   LocaleText(
+//                     'instructions4.1',
+//                     style: TextStyle(
+//                         color: Colors.red,
+//                         fontWeight: FontWeight.bold,
+//                         fontSize: 15),
+//                   ),
+//                   SizedBox(height: 10),
+//                   LocaleText(
+//                     'instructions5',
+//                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+//                   ),
+//                   LocaleText(
+//                     'instructions5.1',
+//                     style: TextStyle(
+//                         color: Colors.red,
+//                         fontWeight: FontWeight.bold,
+//                         fontSize: 15),
+//                   ),
+//                   SizedBox(height: 10),
+//                   LocaleText(
+//                     'instructions6',
+//                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+//                   ),
+//                   LocaleText(
+//                     'instructions6.1',
+//                     style: TextStyle(
+//                         color: Colors.red,
+//                         fontWeight: FontWeight.bold,
+//                         fontSize: 15),
+//                   ),
+//                   SizedBox(height: 10),
+//                   LocaleText(
+//                     'instructions7',
+//                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+//                   ),
+//                   LocaleText(
+//                     'instructions7.1',
+//                     style: TextStyle(
+//                         color: Colors.red,
+//                         fontWeight: FontWeight.bold,
+//                         fontSize: 15),
+//                   ),
+//                 ],
+// =======
+            title: Padding(
+              padding: EdgeInsets.only(
+                top: 32,
+              ),
+              child: Text(
+                'Snap Tips',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
               ),
             ),
+            content: Column(
+              children: [
+                SizedBox(height: 20),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CorrectExample(),
+                      SizedBox(height: 64),
+                      IncorrectExamples(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
             actions: <Widget>[
-              TextButton(
+              Container(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xff38b000),
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                  ),
                   onPressed: () async {
                     if (flag == true) {
                       imageFile = await ImagePickerHelperImpl()
@@ -157,33 +189,184 @@ Future<void> showInstructionsDialog(
                           MaterialPageRoute(
                               builder: (context) =>
                                   PredictedResultPage(plantModel: plantModel)));
-                    }
+                    } // Close the dialog
                   },
-                  child: const Center(
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        LocaleText(
-                          'take_photo',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                          ),
-                        ),
-                        SizedBox(width: 8),
-                        Icon(
-                          Icons.camera_alt,
-                          color: Color(0xff2d232e),
-                          size: 22,
-                        ),
-                      ],
-                    ),
-                  )),
+// <<<<<<< HEAD
+//                   child: const Center(
+//                     child: Row(
+//                       mainAxisSize: MainAxisSize.min,
+//                       children: [
+//                         LocaleText(
+//                           'take_photo',
+//                           style: TextStyle(
+//                             color: Colors.black,
+//                             fontWeight: FontWeight.bold,
+//                             fontSize: 22,
+//                           ),
+//                         ),
+//                         SizedBox(width: 8),
+//                         Icon(
+//                           Icons.camera_alt,
+//                           color: Color(0xff2d232e),
+//                           size: 22,
+//                         ),
+//                       ],
+//                     ),
+//                   )),
+// =======
+                  child: Text(
+                    'Continue',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+              // TextButton(
+              //     onPressed: () async {
+              //       if (flag == true) {
+              //         imageFile = await ImagePickerHelperImpl()
+              //             .pickImageFileFromCamera();
+              //       } else {
+              //         imageFile = await ImagePickerHelperImpl()
+              //             .pickImageFileFromGallery();
+              //       }
+              //
+              //       if (imageFile != null) {
+              //         // imageUrl = await StorageHelperImpl()
+              //         //     .uploadImageFromFile(imageFile!);
+              //         PlantModel plantModel = PlantModel(
+              //             plantName: selectedPlant.toLowerCase(),
+              //             image: imageFile!,
+              //             id: 0);
+              //         context.read<DiseaseBloc>().add(AddPhotoEvent(
+              //             imageUrl: imageFile!,
+              //             plantName: plantModel.plantName));
+              //         Navigator.of(context).pop();
+              //         setStateInDialog(() {
+              //           flag = true;
+              //         });
+              //         Navigator.push(
+              //             context,
+              //             MaterialPageRoute(
+              //                 builder: (context) =>
+              //                     PredictedResultPage(plantModel: plantModel)));
+              //       }
+              //     },
+              //
+              //     child: const Center(
+              //       child: Row(
+              //         mainAxisSize: MainAxisSize.min,
+              //         children: [
+              //           Text(
+              //             'Take a Photo',
+              //             style: TextStyle(
+              //               color: Colors.black,
+              //               fontWeight: FontWeight.bold,
+              //               fontSize: 22,
+              //             ),
+              //           ),
+              //           SizedBox(width: 8),
+              //           Icon(
+              //             Icons.camera_alt,
+              //             color: Color(0xff2d232e),
+              //             size: 22,
+              //           ),
+              //         ],
+              //       ),
+              //     )),
             ],
           );
         },
       );
     },
   );
+}
+
+class CorrectExample extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 80,
+          backgroundImage: AssetImage('assets/images/healthy.jpg'),
+          child: Align(
+            alignment: Alignment.bottomRight,
+            child: Icon(
+              Icons.check_circle,
+              color: Colors.green,
+              size: 40,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class IncorrectExamples extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          IncorrectExample(
+            imagePath: 'assets/images/too close.jpeg',
+            label: 'Too close',
+          ),
+          SizedBox(
+            width: 8,
+          ),
+          IncorrectExample(
+            imagePath: 'assets/images/too far.PNG',
+            label: 'Too far',
+          ),
+          SizedBox(
+            width: 5,
+          ),
+          IncorrectExample(
+            imagePath: 'assets/images/multiple.jpg',
+            label: 'Multiple species',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class IncorrectExample extends StatelessWidget {
+  final String imagePath;
+  final String label;
+
+  IncorrectExample({required this.imagePath, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 50,
+          backgroundImage: AssetImage(imagePath),
+          child: Align(
+            alignment: Alignment.topRight,
+            child: CircleAvatar(
+              radius: 15,
+              backgroundColor: Colors.red,
+              child: Icon(
+                Icons.close,
+                color: Colors.white,
+                size: 30,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(height: 10),
+        Text(
+          label,
+          style: TextStyle(color: Colors.black),
+        ),
+      ],
+    );
+  }
 }

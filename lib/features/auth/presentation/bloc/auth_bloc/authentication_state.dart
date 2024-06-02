@@ -10,7 +10,5 @@ class Authorized extends AuthenticationState {}
 class UnAuthorized extends AuthenticationState {}
 
 class AuthError extends AuthenticationState {
-  final String error;
-
-  AuthError({required this.error});
+  AuthError();
 }

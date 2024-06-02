@@ -63,5 +63,7 @@
   "corn_ray_leaf": "Gray Leaf Spot",
   "wheat_brown": "Brown rust",
   "wheat_yellow": "Yellow rust",
-  "language": "Language Setting"
+  "language": "Language Setting",
+  "snap_tips": "Snap Tips",
+  "continue": "Continue"
 }
