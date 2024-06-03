@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_locales/flutter_locales.dart';
@@ -16,6 +17,17 @@ Future<void> showInstructionsDialog(
     bool flag) async {
   File? imageFile;
   String? imageUrl;
+  final Map<String, String> plantNameMap = {
+    'تفاح': 'apple',
+    'فراولة': 'strawberry',
+    'بطاطس': 'potato',
+    'عنب': 'grape',
+    'خوخ': 'peach',
+    'ذرة': 'corn',
+    'كرز': 'cherry',
+    'قمح': 'wheat',
+    'فلفل': 'pepper',
+  };
 
   return showDialog<void>(
     context: context,
@@ -129,7 +141,7 @@ Future<void> showInstructionsDialog(
                 top: 32,
               ),
               child: Text(
-                'Snap Tips',
+                tr('Snap Tips'),
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 28,
@@ -171,10 +183,13 @@ Future<void> showInstructionsDialog(
                     }
 
                     if (imageFile != null) {
-                      // imageUrl = await StorageHelperImpl()
-                      //     .uploadImageFromFile(imageFile!);
+                      String selectedPlantEnglish = selectedPlant;
+                      if (plantNameMap.containsKey(selectedPlant)) {
+                        selectedPlantEnglish = plantNameMap[selectedPlant]!;
+                      }
+
                       PlantModel plantModel = PlantModel(
-                          plantName: selectedPlant.toLowerCase(),
+                          plantName: selectedPlantEnglish.toLowerCase(),
                           image: imageFile!,
                           id: 0);
                       context.read<DiseaseBloc>().add(AddPhotoEvent(
@@ -215,64 +230,11 @@ Future<void> showInstructionsDialog(
 //                   )),
 // =======
                   child: Text(
-                    'Continue',
+                    tr('continue'),
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
-              // TextButton(
-              //     onPressed: () async {
-              //       if (flag == true) {
-              //         imageFile = await ImagePickerHelperImpl()
-              //             .pickImageFileFromCamera();
-              //       } else {
-              //         imageFile = await ImagePickerHelperImpl()
-              //             .pickImageFileFromGallery();
-              //       }
-              //
-              //       if (imageFile != null) {
-              //         // imageUrl = await StorageHelperImpl()
-              //         //     .uploadImageFromFile(imageFile!);
-              //         PlantModel plantModel = PlantModel(
-              //             plantName: selectedPlant.toLowerCase(),
-              //             image: imageFile!,
-              //             id: 0);
-              //         context.read<DiseaseBloc>().add(AddPhotoEvent(
-              //             imageUrl: imageFile!,
-              //             plantName: plantModel.plantName));
-              //         Navigator.of(context).pop();
-              //         setStateInDialog(() {
-              //           flag = true;
-              //         });
-              //         Navigator.push(
-              //             context,
-              //             MaterialPageRoute(
-              //                 builder: (context) =>
-              //                     PredictedResultPage(plantModel: plantModel)));
-              //       }
-              //     },
-              //
-              //     child: const Center(
-              //       child: Row(
-              //         mainAxisSize: MainAxisSize.min,
-              //         children: [
-              //           Text(
-              //             'Take a Photo',
-              //             style: TextStyle(
-              //               color: Colors.black,
-              //               fontWeight: FontWeight.bold,
-              //               fontSize: 22,
-              //             ),
-              //           ),
-              //           SizedBox(width: 8),
-              //           Icon(
-              //             Icons.camera_alt,
-              //             color: Color(0xff2d232e),
-              //             size: 22,
-              //           ),
-              //         ],
-              //       ),
-              //     )),
             ],
           );
         },
@@ -313,21 +275,21 @@ class IncorrectExamples extends StatelessWidget {
         children: [
           IncorrectExample(
             imagePath: 'assets/images/too close.jpeg',
-            label: 'Too close',
+            label: tr('Too close'),
           ),
           SizedBox(
             width: 8,
           ),
           IncorrectExample(
             imagePath: 'assets/images/too far.PNG',
-            label: 'Too far',
+            label: tr('Too far'),
           ),
           SizedBox(
             width: 5,
           ),
           IncorrectExample(
             imagePath: 'assets/images/multiple.jpg',
-            label: 'Multiple species',
+            label: tr('Multiple species'),
           ),
         ],
       ),

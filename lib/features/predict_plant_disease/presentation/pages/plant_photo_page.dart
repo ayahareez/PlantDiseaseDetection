@@ -1,11 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 import 'package:plant_disease/features/auth/presentation/bloc/auth_bloc/authentication_bloc.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/pages/localization_page.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/widgets/instruction_dialog.dart';
-import 'package:plant_disease/features/auth/presentation/pages/login_page.dart';
-import 'chatPot.dart';
-import 'localization.dart';  // استيراد صفحة Localization
+
+import '../../../auth/presentation/pages/login_page.dart';
+import 'chatPot_page.dart';
 
 class PlantPhotoPage extends StatefulWidget {
   const PlantPhotoPage({Key? key}) : super(key: key);
@@ -17,19 +18,7 @@ class PlantPhotoPage extends StatefulWidget {
 class _PlantPhotoPageState extends State<PlantPhotoPage> {
   String selectedPlant = '';
   String searchQuery = '';
-  List<String> plantNames = [
-    'Apple',
-    'Strawberry',
-    'Potato',
-    'Grape',
-    'Peach',
-    'Corn',
-    'Cherry',
-    'Wheat',
-    'Pepper',
-  ];
-
-  // List of image paths corresponding to each plant
+  List<String> plantNames = [];
   List<String> plantIcons = [
     'assets/images/apple.png',
     'assets/images/strawberry.png',
@@ -44,13 +33,30 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
 
   List<String> filteredPlantNames = [];
   List<String> filteredPlantIcons = [];
-  bool isPlantSelected = true; // Add this variable
+  bool isPlantSelected = true;
 
   @override
   void initState() {
     super.initState();
-    filteredPlantNames = plantNames;
-    filteredPlantIcons = plantIcons;
+    initializePlantNames();
+  }
+
+  void initializePlantNames() {
+    setState(() {
+      plantNames = [
+        tr('apple'),
+        tr('strawberry'),
+        tr('potato'),
+        tr('grape'),
+        tr('peach'),
+        tr('corn'),
+        tr('cherry'),
+        tr('wheat'),
+        tr('pepper'),
+      ];
+      filteredPlantNames = plantNames;
+      filteredPlantIcons = plantIcons;
+    });
   }
 
   void updateSearch(String query) {
@@ -60,9 +66,7 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
           .where((name) => name.toLowerCase().contains(query.toLowerCase()))
           .toList();
       filteredPlantIcons = plantIcons.where((icon) {
-        // Extract the plant name from the icon path
         String iconName = icon.split('/').last.split('.').first;
-        // Check if the filtered plant names contain the extracted plant name
         return filteredPlantNames.contains(iconName.capitalize());
       }).toList();
     });
@@ -87,33 +91,35 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const LocaleText(
-            "bezra",
-            style: TextStyle(
+          title: Text(
+            tr("bezra"),
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
             ),
+          ),
+          leading: IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () async {
+              final result = await Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const LocalizationPage()),
+              );
+              if (result == true) {
+                initializePlantNames();
+              }
+            },
           ),
           actions: [
             IconButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ChatScreen()),
+                  MaterialPageRoute(builder: (context) => const ChatScreen()),
                 );
               },
-              icon: Icon(Icons.chat), // Using the chat icon
+              icon: const Icon(Icons.chat),
             ),
-
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Localization()),
-                );
-              },
-              icon: Icon(Icons.language),
-            ),
-
             BlocListener<AuthenticationBloc, AuthenticationState>(
               listener: (context, state) {
                 if (state is UnAuthorized) {
@@ -138,21 +144,21 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
         body: Column(
           children: [
             Container(
-              margin: EdgeInsets.all(16),
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              margin: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: Colors.grey[200],
               ),
               child: Row(
                 children: [
-                  Icon(Icons.search, color: Color(0xff2d232e)),
-                  SizedBox(width: 8),
+                  const Icon(Icons.search, color: Color(0xff2d232e)),
+                  const SizedBox(width: 8),
                   Expanded(
                     child: TextField(
                       onChanged: updateSearch,
                       decoration: InputDecoration(
-                        hintText: 'Search...',
+                        hintText: tr('search'),
                         border: InputBorder.none,
                       ),
                     ),
@@ -162,29 +168,26 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
             ),
             Expanded(
               child: GridView.builder(
-                padding: EdgeInsets.symmetric(
-                    horizontal: 16), // Add padding to the GridView
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, // Number of columns
-                  crossAxisSpacing: 8, // Spacing between columns
-                  mainAxisSpacing: 8, // Spacing between rows
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
                 ),
                 itemCount: filteredPlantNames.length,
                 itemBuilder: (context, index) {
                   final plantType = filteredPlantNames[index];
-                  final plantIconPath = filteredPlantIcons[
-                  index]; // Get the corresponding image path
+                  final plantIconPath = filteredPlantIcons[index];
                   return GestureDetector(
                     onTap: () {
                       if (selectedPlant == plantType) {
-                        deselectPlant(); // Deselect the plant if it's already selected
+                        deselectPlant();
                       } else {
-                        selectPlant(plantType); // Select the plant
+                        selectPlant(plantType);
                       }
                     },
                     child: Container(
-                      padding:
-                      EdgeInsets.all(8), // Add padding to the Container
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: selectedPlant == plantType
@@ -194,16 +197,12 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset(plantIconPath,
-                              width: 60,
-                              height: 60),
-                          SizedBox(height: 4),
-                          LocaleText(
+                          Image.asset(plantIconPath, width: 60, height: 60),
+                          const SizedBox(height: 4),
+                          Text(
                             plantType,
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight
-                                    .bold), // Adjust size and weight here
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -212,36 +211,32 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                 },
               ),
             ),
-            SizedBox(
-                height: 16), // Added space between the GridView and the note
+            const SizedBox(height: 16),
             Container(
-              padding: EdgeInsets.all(8),
-              margin: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.all(8),
+              margin: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Color(0xffc8e6c9), // Light red color
+                color: const Color(0xffc8e6c9),
               ),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    Text(
+                    const Text(
                       '* ',
-                      style: TextStyle(
-                          fontSize: 20, color: Colors.red), // Red star
+                      style: TextStyle(fontSize: 20, color: Colors.red),
                     ),
-                    const LocaleText(
-                      'upload_photo',
-                      style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    Text(
+                      tr('upload_photo'),
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -249,28 +244,22 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white38,
-                    // color: Colors.green[100], // Light green color
                   ),
                   child: IconButton(
                     onPressed: isPlantSelected
                         ? null
                         : () {
-                      showInstructionsDialog(
-                          context, setState, selectedPlant, true);
-                    },
+                            showInstructionsDialog(
+                                context, setState, selectedPlant, true);
+                          },
                     icon: Icon(
                       Icons.camera_alt,
                       size: 55,
-                      color: isPlantSelected
-                          ? Colors.grey
-                          : Colors
-                          .blue, // Disable the icon if a plant is selected
+                      color: isPlantSelected ? Colors.grey : Colors.blue,
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 17,
-                ),
+                const SizedBox(width: 17),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
@@ -280,21 +269,18 @@ class _PlantPhotoPageState extends State<PlantPhotoPage> {
                     onPressed: isPlantSelected
                         ? null
                         : () {
-                      showInstructionsDialog(
-                          context, setState, selectedPlant, false);
-                    },
+                            showInstructionsDialog(
+                                context, setState, selectedPlant, false);
+                          },
                     icon: Icon(
                       Icons.photo,
                       size: 55,
-                      color: isPlantSelected
-                          ? Colors.grey
-                          : Colors.green[
-                      500], // Disable the icon if a plant is selected
+                      color: isPlantSelected ? Colors.grey : Colors.green[500],
                     ),
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

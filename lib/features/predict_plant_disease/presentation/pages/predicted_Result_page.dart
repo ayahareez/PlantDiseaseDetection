@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 import 'package:lottie/lottie.dart';
 import 'package:plant_disease/core/widgets/loading_widget.dart';
 import 'package:plant_disease/features/predict_plant_disease/data/models/plant_model.dart';
-import 'package:plant_disease/features/predict_plant_disease/presentation/pages/chatPot.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/pages/chatPot_page.dart';
 import '../bloc/disease_bloc/disease_bloc.dart';
 import '../bloc/disease_info_bloc/disease_info_bloc.dart';
 import '../widgets/message_display_widget.dart';
@@ -20,16 +19,17 @@ class PredictedResultPage extends StatelessWidget {
         return SafeArea(
           child: Scaffold(
             appBar: AppBar(
-              title: const LocaleText('result'),
+              title: const Text('The Predicted Result'),
               actions: [
                 IconButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ChatScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => const ChatScreen()),
                     );
                   },
-                  icon: Icon(Icons.chat), // Using the chat icon
+                  icon: const Icon(Icons.chat), // Using the chat icon
                 ),
               ],
             ),
@@ -82,9 +82,9 @@ class PredictedResultPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(16),
                                     border: Border.all(
                                       color: Colors
-                                          .black,
+                                          .black, // Set your desired border color
                                       width:
-                                          2.0,
+                                          2.0, // Set your desired border width
                                     ),
                                   ),
                                   child: Image.file(
@@ -100,62 +100,31 @@ class PredictedResultPage extends StatelessWidget {
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Row(
-                                      children: [
-                                        LocaleText(
-                                          'type',
-                                          style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        Text(
-                                          '${state.disease.className}',
-                                          style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                      ],
+                                    Text(
+                                      'Type: ${state.disease.className}',
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500),
                                     ),
                                     const SizedBox(
                                       height: 8,
                                     ),
-                                    Row(
-                                      children: [
-                                        LocaleText(
-                                          'certainty',
-                                          style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        Text(
-                                          '${(state.disease.confidence * 100).toStringAsFixed(1)}%',
-                                          style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                      ],
+                                    Text(
+                                      'Certainty: ${(state.disease.confidence * 100).toStringAsFixed(1)}%',
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500),
                                     ),
                                     const SizedBox(
                                       height: 8,
                                     ),
                                     if (state.disease.className != 'Healthy')
-                                      Row(
-                                        children: [
-                                          LocaleText(
-                                            'threat_level',
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                          Text(
-                                            '${state.disease.confidence * 100 > 90 ? 'high' : state.disease.confidence * 100 < 80 && state.disease.confidence * 100 > 60 ? 'medium' : 'low'}',
-                                            style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ],
+                                      Text(
+                                        'Threat Level: ${state.disease.confidence * 100 > 90 ? 'high' : state.disease.confidence * 100 < 80 && state.disease.confidence * 100 > 60 ? 'medium' : 'low'}',
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       )
                                   ],
                                 ),
@@ -304,26 +273,13 @@ class PredictedResultPage extends StatelessWidget {
                         //   ],
                         // ),
                         if (state.disease.className == 'Healthy')
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Lottie.asset(
-                                'assets/animations/Animation - 1716919740547 (1).json',
-                                width: 250,
-                                height: 250,
-                              ),
-                              Text(
-                                'Your plant is flourishing and healthy! 🌿 Keep up the great care!',
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.green,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                textAlign: TextAlign.center, // Make sure the text is centered
-                              ),
-                            ],
-                          )
-
+                          Lottie.asset(
+                            'assets/animations/Animation - healthy.json',
+                            // Replace with the actual path to your Lottie JSON file
+                            width: 250,
+                            height: 250,
+                            // Other options...
+                          ),
                       ],
                     ),
                   );
@@ -336,19 +292,19 @@ class PredictedResultPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Rate this model: ',
                     style: TextStyle(fontSize: 18),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.thumb_up,
                     ),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.thumb_down),
+                    icon: const Icon(Icons.thumb_down),
                   ),
                 ],
               ),

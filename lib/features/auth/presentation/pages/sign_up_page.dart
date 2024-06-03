@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 import 'package:lottie/lottie.dart';
 import 'package:plant_disease/features/auth/presentation/pages/login_page.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_photo_page.dart';
@@ -36,8 +36,8 @@ class SignUpPage extends StatelessWidget {
                       height: 250,
                     ),
                   ),
-                  const LocaleText(
-                    'sign_up',
+                  Text(
+                    tr('sign_up'),
                     style: TextStyle(
                         fontSize: 40.0,
                         fontWeight: FontWeight.bold,
@@ -48,8 +48,8 @@ class SignUpPage extends StatelessWidget {
                   ),
                   TextFormField(
                     controller: name,
-                    decoration: const InputDecoration(
-                      hintText: 'Name',
+                    decoration: InputDecoration(
+                      hintText: tr('name'),
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(
                         Icons.person,
@@ -57,7 +57,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     validator: (text) {
                       if (text!.isEmpty) {
-                        return 'field can not be null';
+                        return tr('null_field');
                       } else {
                         return null;
                       }
@@ -68,8 +68,8 @@ class SignUpPage extends StatelessWidget {
                   ),
                   TextFormField(
                     controller: email,
-                    decoration: const InputDecoration(
-                      hintText: 'Email',
+                    decoration: InputDecoration(
+                      hintText: tr("Email"),
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(
                         Icons.email,
@@ -77,7 +77,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     validator: (text) {
                       if (text!.isEmpty) {
-                        return 'field can not be null';
+                        return tr('null_field');
                       }
                       if (text.length < 6 ||
                           !text.contains('@') ||
@@ -94,8 +94,8 @@ class SignUpPage extends StatelessWidget {
                   TextFormField(
                     controller: password,
                     obscureText: true,
-                    decoration: const InputDecoration(
-                      hintText: 'Password',
+                    decoration: InputDecoration(
+                      hintText: tr('Password'),
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(
                         Icons.lock,
@@ -103,7 +103,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     validator: (text) {
                       if (text!.isEmpty) {
-                        return 'field can not be null';
+                        return tr('null_field');
                       }
                       if (text.length < 8) {
                         return 'password must be strong';
@@ -151,8 +151,8 @@ class SignUpPage extends StatelessWidget {
                                       const PlantPhotoPage()));
                         }
                       },
-                      child: const LocaleText(
-                        'sign_up',
+                      child: Text(
+                        tr("sign_up"),
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 24,
@@ -173,12 +173,12 @@ class SignUpPage extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          LocaleText('have_account',
+                          Text(tr("have_account"),
                               style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.black,
                                   fontFamily: 'MyFont')),
-                          LocaleText('heading',
+                          Text(tr("heading"),
                               style: TextStyle(
                                   fontSize: 18,
                                   color: Color(0xff276E23),

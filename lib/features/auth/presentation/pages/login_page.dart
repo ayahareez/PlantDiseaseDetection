@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_locales/flutter_locales.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_photo_page.dart';
@@ -67,9 +67,9 @@ class _LoginPageState extends State<LoginPage> {
                             // Other options...
                           ),
                         ),
-                        const LocaleText(
-                          'heading',
-                          style: TextStyle(
+                        Text(
+                          tr('heading'),
+                          style: const TextStyle(
                               fontSize: 40.0,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'MyFont'),
@@ -80,16 +80,16 @@ class _LoginPageState extends State<LoginPage> {
                         TextFormField(
                           controller: email,
                           keyboardType: TextInputType.emailAddress,
-                          decoration: const InputDecoration(
-                            labelText: 'Email',
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(
+                          decoration: InputDecoration(
+                            labelText: tr('Email'),
+                            border: const OutlineInputBorder(),
+                            prefixIcon: const Icon(
                               Icons.email,
                             ),
                           ),
                           validator: (text) {
                             if (text!.isEmpty) {
-                              return 'field can not be null';
+                              return tr('null_field');
                             }
                             if (text.length < 6 ||
                                 !text.contains('@') ||
@@ -108,19 +108,19 @@ class _LoginPageState extends State<LoginPage> {
                           controller: password,
                           keyboardType: TextInputType.emailAddress,
                           obscureText: true,
-                          decoration: const InputDecoration(
-                            labelText: 'Password',
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(
+                          decoration: InputDecoration(
+                            labelText: tr('Password'),
+                            border: const OutlineInputBorder(),
+                            prefixIcon: const Icon(
                               Icons.lock,
                             ),
                           ),
                           validator: (text) {
                             if (text!.isEmpty) {
-                              return 'field can not be null';
+                              return tr('null_field');
                             }
                             if (text.length < 8) {
-                              return 'password must be strong';
+                              return tr('strong');
                             } else {
                               return null;
                             }
@@ -166,8 +166,8 @@ class _LoginPageState extends State<LoginPage> {
                                 }
                               }
                             },
-                            child: const LocaleText(
-                              'heading',
+                            child: Text(
+                              tr('heading'),
                               style:
                                   TextStyle(color: Colors.white, fontSize: 24),
                             ),
@@ -179,10 +179,10 @@ class _LoginPageState extends State<LoginPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const LocaleText(
-                              'no_account',
-                              style:
-                                  TextStyle(fontSize: 18, fontFamily: 'MyFont'),
+                            Text(
+                              tr('no_account'),
+                              style: const TextStyle(
+                                  fontSize: 18, fontFamily: 'MyFont'),
                             ),
                             TextButton(
                               onPressed: () {
@@ -191,8 +191,8 @@ class _LoginPageState extends State<LoginPage> {
                                     MaterialPageRoute(
                                         builder: (_) => SignUpPage()));
                               },
-                              child: const LocaleText('register',
-                                  style: TextStyle(
+                              child: Text(tr('register'),
+                                  style: const TextStyle(
                                       fontSize: 18,
                                       color: Color(0xff276E23),
                                       fontFamily: 'MyFont')),
@@ -209,8 +209,8 @@ class _LoginPageState extends State<LoginPage> {
                                   .read<AuthenticationBloc>()
                                   .add(SignInAnonymouslyEvent());
                             },
-                            child: const LocaleText('login_guest',
-                                style: TextStyle(
+                            child: Text(tr('login_guest'),
+                                style: const TextStyle(
                                     fontSize: 20,
                                     color: Color(0xff276E23),
                                     fontFamily: 'MyFont')),

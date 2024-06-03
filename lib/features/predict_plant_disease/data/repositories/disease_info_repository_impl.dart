@@ -22,6 +22,7 @@ class DiseaseInfoRepositoryImpl implements DiseaseInfoRepository {
       // print(diseaseInfo.where((element) =>
       //     element.diseaseName == disease.className &&
       //     element.plantCategory == disease.plantName));
+
       DiseaseInformationModel diseaseInformationModel = diseaseInfo
           .where((element) =>
               element.diseaseName == disease.className &&
