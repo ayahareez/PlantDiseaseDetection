@@ -158,7 +158,7 @@ Future<void> showInstructionsDialog(
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xff38b000),
+                    backgroundColor: Color(0xff38b000),
                     padding: EdgeInsets.symmetric(vertical: 15),
                   ),
                   onPressed: () async {
