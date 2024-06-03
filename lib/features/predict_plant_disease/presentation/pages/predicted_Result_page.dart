@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:lottie/lottie.dart';
 import 'package:plant_disease/core/widgets/loading_widget.dart';
 import 'package:plant_disease/features/predict_plant_disease/data/models/plant_model.dart';
-import '../../../../core/app_theme.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/pages/chatPot.dart';
 import '../bloc/disease_bloc/disease_bloc.dart';
 import '../bloc/disease_info_bloc/disease_info_bloc.dart';
 import '../widgets/message_display_widget.dart';
@@ -19,7 +20,18 @@ class PredictedResultPage extends StatelessWidget {
         return SafeArea(
           child: Scaffold(
             appBar: AppBar(
-              title: const Text('The Predicted Result'),
+              title: const LocaleText('result'),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ChatScreen()),
+                    );
+                  },
+                  icon: Icon(Icons.chat), // Using the chat icon
+                ),
+              ],
             ),
             body: BlocBuilder<DiseaseBloc, DiseaseState>(
               builder: (context, state) {
@@ -70,9 +82,9 @@ class PredictedResultPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(16),
                                     border: Border.all(
                                       color: Colors
-                                          .black, // Set your desired border color
+                                          .black,
                                       width:
-                                          2.0, // Set your desired border width
+                                          2.0,
                                     ),
                                   ),
                                   child: Image.file(
@@ -88,31 +100,62 @@ class PredictedResultPage extends StatelessWidget {
                               Expanded(
                                 child: Column(
                                   children: [
-                                    Text(
-                                      'Type: ${state.disease.className}',
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500),
+                                    Row(
+                                      children: [
+                                        LocaleText(
+                                          'type',
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        Text(
+                                          '${state.disease.className}',
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ],
                                     ),
                                     const SizedBox(
                                       height: 8,
                                     ),
-                                    Text(
-                                      'Certainty: ${(state.disease.confidence * 100).toStringAsFixed(1)}%',
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500),
+                                    Row(
+                                      children: [
+                                        LocaleText(
+                                          'certainty',
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        Text(
+                                          '${(state.disease.confidence * 100).toStringAsFixed(1)}%',
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ],
                                     ),
                                     const SizedBox(
                                       height: 8,
                                     ),
                                     if (state.disease.className != 'Healthy')
-                                      Text(
-                                        'Threat Level: ${state.disease.confidence * 100 > 90 ? 'high' : state.disease.confidence * 100 < 80 && state.disease.confidence * 100 > 60 ? 'medium' : 'low'}',
-                                        style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                                      Row(
+                                        children: [
+                                          LocaleText(
+                                            'threat_level',
+                                            style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          Text(
+                                            '${state.disease.confidence * 100 > 90 ? 'high' : state.disease.confidence * 100 < 80 && state.disease.confidence * 100 > 60 ? 'medium' : 'low'}',
+                                            style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
                                       )
                                   ],
                                 ),
@@ -139,9 +182,14 @@ class PredictedResultPage extends StatelessWidget {
                                 );
                               }
                               if (state is LoadedDiseaseInfoState) {
+                                print("${state.diseaseInformation}" +
+                                    '0000000000000');
                                 List<String> diseaseOverview = state
                                     .diseaseInformation.diseaseOverview
                                     .split('.');
+                                print('object');
+                                print("${diseaseOverview} " +
+                                    "0000000000000000000000");
                                 List<String> diseaseCauses = state
                                     .diseaseInformation.diseaseCauses
                                     .split('.');
@@ -171,7 +219,8 @@ class PredictedResultPage extends StatelessWidget {
                                         children: <Widget>[
                                           ListTile(
                                             title: Text(
-                                              '${diseaseOverview[0]}.\n${diseaseOverview[1]}.\n${diseaseOverview[2]}.\n${diseaseOverview[3]}',
+                                              //${diseaseOverview[0]}.\n${diseaseOverview[1]}.\n${diseaseOverview[2]}.\n${diseaseOverview[3]}
+                                              '${diseaseOverview.join('.\n')}',
                                               style:
                                                   const TextStyle(fontSize: 22),
                                             ),
@@ -191,7 +240,7 @@ class PredictedResultPage extends StatelessWidget {
                                           // الشرح أو المعلومات الإضافية
                                           ListTile(
                                             title: Text(
-                                              '${diseaseCauses[0]}.\n${diseaseCauses[1]}.\n${diseaseCauses[2]}',
+                                              '${diseaseCauses.join('.\n')}',
                                               style:
                                                   const TextStyle(fontSize: 22),
                                             ),
@@ -210,7 +259,7 @@ class PredictedResultPage extends StatelessWidget {
                                         children: <Widget>[
                                           ListTile(
                                             title: Text(
-                                              '${diseasePrevention[0]}.\n${diseasePrevention[1]}.\n${diseasePrevention[2]}.\n${diseasePrevention[3]}.',
+                                              '${diseasePrevention.join('.\n')}',
                                               style:
                                                   const TextStyle(fontSize: 22),
                                             ),
@@ -230,7 +279,7 @@ class PredictedResultPage extends StatelessWidget {
                                           // الشرح أو المعلومات الإضافية
                                           ListTile(
                                             title: Text(
-                                              '${diseaseRecovery[0]}.\n${diseaseRecovery[1]}.\n${diseaseRecovery[2]}.',
+                                              '${diseaseRecovery.join('.\n')}',
                                               style:
                                                   const TextStyle(fontSize: 22),
                                             ),
@@ -255,13 +304,26 @@ class PredictedResultPage extends StatelessWidget {
                         //   ],
                         // ),
                         if (state.disease.className == 'Healthy')
-                          Lottie.asset(
-                            'assets/animations/Animation - 1709044285025.json',
-                            // Replace with the actual path to your Lottie JSON file
-                            width: 250,
-                            height: 250,
-                            // Other options...
-                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Lottie.asset(
+                                'assets/animations/Animation - 1716919740547 (1).json',
+                                width: 250,
+                                height: 250,
+                              ),
+                              Text(
+                                'Your plant is flourishing and healthy! 🌿 Keep up the great care!',
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center, // Make sure the text is centered
+                              ),
+                            ],
+                          )
+
                       ],
                     ),
                   );

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_locales/flutter_locales.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lottie/lottie.dart';
 import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_photo_page.dart';
@@ -38,9 +39,9 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (_) => const PlantPhotoPage()));
           }
-          if (state is AuthError) {
-            showToast("An error occurred: ${state.error}");
-          }
+          // if (state is AuthError) {
+          //   showToast("An error occurred: ${state.error}");
+          // }
         },
         builder: (context, state) {
           print(state);
@@ -66,8 +67,8 @@ class _LoginPageState extends State<LoginPage> {
                             // Other options...
                           ),
                         ),
-                        const Text(
-                          'Login',
+                        const LocaleText(
+                          'heading',
                           style: TextStyle(
                               fontSize: 40.0,
                               fontWeight: FontWeight.bold,
@@ -165,8 +166,8 @@ class _LoginPageState extends State<LoginPage> {
                                 }
                               }
                             },
-                            child: const Text(
-                              'Login',
+                            child: const LocaleText(
+                              'heading',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 24),
                             ),
@@ -178,8 +179,8 @@ class _LoginPageState extends State<LoginPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              'Don\'t have an account ? ',
+                            const LocaleText(
+                              'no_account',
                               style:
                                   TextStyle(fontSize: 18, fontFamily: 'MyFont'),
                             ),
@@ -190,7 +191,7 @@ class _LoginPageState extends State<LoginPage> {
                                     MaterialPageRoute(
                                         builder: (_) => SignUpPage()));
                               },
-                              child: const Text('Register now ',
+                              child: const LocaleText('register',
                                   style: TextStyle(
                                       fontSize: 18,
                                       color: Color(0xff276E23),
@@ -208,7 +209,7 @@ class _LoginPageState extends State<LoginPage> {
                                   .read<AuthenticationBloc>()
                                   .add(SignInAnonymouslyEvent());
                             },
-                            child: const Text(' Login as a guest',
+                            child: const LocaleText('login_guest',
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: Color(0xff276E23),
