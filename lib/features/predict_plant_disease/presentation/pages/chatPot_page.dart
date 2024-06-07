@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:intl/intl.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_photo_page.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -43,6 +44,16 @@ class _ChatScreenState extends State<ChatScreen> {
         appBar: AppBar(
           title: Text('Ask more about the disease'),
           backgroundColor: Color(0xff38b000).withOpacity(0.7),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PlantPhotoPage()));
+                },
+                icon: Icon(Icons.home)),
+          ],
         ),
         body: Container(
           decoration: BoxDecoration(

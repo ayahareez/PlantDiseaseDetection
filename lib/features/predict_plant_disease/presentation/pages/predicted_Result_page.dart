@@ -1,25 +1,70 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:plant_disease/core/widgets/loading_widget.dart';
 import 'package:plant_disease/features/predict_plant_disease/data/models/plant_model.dart';
-import 'package:plant_disease/features/predict_plant_disease/presentation/pages/chatPot_page.dart';
+import 'package:plant_disease/features/predict_plant_disease/presentation/pages/plant_photo_page.dart';
+import '../../../auth/presentation/bloc/auth_bloc/authentication_bloc.dart';
+import '../../../auth/presentation/pages/login_page.dart';
 import '../bloc/disease_bloc/disease_bloc.dart';
 import '../bloc/disease_info_bloc/disease_info_bloc.dart';
 import '../widgets/message_display_widget.dart';
+import 'chatPot_page.dart';
+import 'localization_page.dart';
 
-class PredictedResultPage extends StatelessWidget {
+class PredictedResultPage extends StatefulWidget {
   PlantModel plantModel;
   PredictedResultPage({super.key, required this.plantModel});
+
+  @override
+  State<PredictedResultPage> createState() => _PredictedResultPageState();
+}
+
+class _PredictedResultPageState extends State<PredictedResultPage> {
+  bool liked = false; // New state for like button
+  bool disliked = false;
+  List<String> filteredPlantNames = [];
+  List<String> filteredPlantIcons = [];
+  List<String> plantNames = [];
+
+  @override
+  void initState() {
+    super.initState();
+    initializePlantNames();
+  }
+
+  @override
+  void didUpdateWidget(covariant PredictedResultPage oldWidget) {
+    // TODO: implement didUpdateWidget
+    setState(() {});
+  }
+
+  void initializePlantNames() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
-    print(plantModel.image);
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return SafeArea(
           child: Scaffold(
             appBar: AppBar(
-              title: const Text('The Predicted Result'),
+              title: Text(tr("result")),
+              leading: IconButton(
+                icon: const Icon(Icons.settings),
+                onPressed: () async {
+                  final result = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LocalizationPage()),
+                  );
+                  if (result == true) {
+                    initializePlantNames();
+                  }
+                },
+              ),
               actions: [
                 IconButton(
                   onPressed: () {
@@ -29,8 +74,16 @@ class PredictedResultPage extends StatelessWidget {
                           builder: (context) => const ChatScreen()),
                     );
                   },
-                  icon: const Icon(Icons.chat), // Using the chat icon
+                  icon: const Icon(Icons.chat),
                 ),
+                IconButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PlantPhotoPage()));
+                    },
+                    icon: Icon(Icons.home)),
               ],
             ),
             body: BlocBuilder<DiseaseBloc, DiseaseState>(
@@ -81,14 +134,12 @@ class PredictedResultPage extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(16),
                                     border: Border.all(
-                                      color: Colors
-                                          .black, // Set your desired border color
-                                      width:
-                                          2.0, // Set your desired border width
+                                      color: Colors.black,
+                                      width: 2.0,
                                     ),
                                   ),
                                   child: Image.file(
-                                    plantModel.image,
+                                    widget.plantModel.image,
                                     height: 200,
                                     fit: BoxFit.cover,
                                   ),
@@ -101,7 +152,7 @@ class PredictedResultPage extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     Text(
-                                      'Type: ${state.disease.className}',
+                                      '${tr("type")}: ${state.disease.className}',
                                       style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.w500),
@@ -110,7 +161,7 @@ class PredictedResultPage extends StatelessWidget {
                                       height: 8,
                                     ),
                                     Text(
-                                      'Certainty: ${(state.disease.confidence * 100).toStringAsFixed(1)}%',
+                                      '${tr("certainty")}: ${(state.disease.confidence * 100).toStringAsFixed(1)}%',
                                       style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.w500),
@@ -120,7 +171,7 @@ class PredictedResultPage extends StatelessWidget {
                                     ),
                                     if (state.disease.className != 'Healthy')
                                       Text(
-                                        'Threat Level: ${state.disease.confidence * 100 > 90 ? 'high' : state.disease.confidence * 100 < 80 && state.disease.confidence * 100 > 60 ? 'medium' : 'low'}',
+                                        '${tr("threat_level")}: ${state.disease.confidence * 100 > 90 ? 'high' : state.disease.confidence * 100 < 80 && state.disease.confidence * 100 > 60 ? 'medium' : 'low'}',
                                         style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.w500,
@@ -174,21 +225,17 @@ class PredictedResultPage extends StatelessWidget {
                                     children: [
                                       ExpansionTile(
                                         title: Text(
-                                          'ABOUT',
+                                          tr('ABOUT'),
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 25,
                                             color:
                                                 Theme.of(context).primaryColor,
                                           ),
-                                          // style: Theme.of(context)
-                                          //     .textTheme
-                                          //     .headline1,
                                         ),
                                         children: <Widget>[
                                           ListTile(
                                             title: Text(
-                                              //${diseaseOverview[0]}.\n${diseaseOverview[1]}.\n${diseaseOverview[2]}.\n${diseaseOverview[3]}
                                               '${diseaseOverview.join('.\n')}',
                                               style:
                                                   const TextStyle(fontSize: 22),
@@ -198,7 +245,7 @@ class PredictedResultPage extends StatelessWidget {
                                       ),
                                       ExpansionTile(
                                         title: Text(
-                                          'CAUSES',
+                                          tr('CAUSES'),
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 25,
@@ -206,7 +253,6 @@ class PredictedResultPage extends StatelessWidget {
                                                   .primaryColor),
                                         ),
                                         children: <Widget>[
-                                          // الشرح أو المعلومات الإضافية
                                           ListTile(
                                             title: Text(
                                               '${diseaseCauses.join('.\n')}',
@@ -218,7 +264,7 @@ class PredictedResultPage extends StatelessWidget {
                                       ),
                                       ExpansionTile(
                                         title: Text(
-                                          'PREVENTION',
+                                          tr('PREVENTION'),
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 25,
@@ -237,7 +283,7 @@ class PredictedResultPage extends StatelessWidget {
                                       ),
                                       ExpansionTile(
                                         title: Text(
-                                          'RECOVERY',
+                                          tr('RECOVERY'),
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 25,
@@ -245,7 +291,6 @@ class PredictedResultPage extends StatelessWidget {
                                                   .primaryColor),
                                         ),
                                         children: <Widget>[
-                                          // الشرح أو المعلومات الإضافية
                                           ListTile(
                                             title: Text(
                                               '${diseaseRecovery.join('.\n')}',
@@ -262,23 +307,11 @@ class PredictedResultPage extends StatelessWidget {
                               return const LoadingWidget();
                             },
                           ),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: [
-                        //     Text('Rate this model: '),
-                        //     IconButton(
-                        //         onPressed: () {}, icon: Icon(Icons.thumb_up)),
-                        //     IconButton(
-                        //         onPressed: () {}, icon: Icon(Icons.thumb_down))
-                        //   ],
-                        // ),
                         if (state.disease.className == 'Healthy')
                           Lottie.asset(
                             'assets/animations/Animation - healthy.json',
-                            // Replace with the actual path to your Lottie JSON file
                             width: 250,
                             height: 250,
-                            // Other options...
                           ),
                       ],
                     ),
@@ -292,19 +325,57 @@ class PredictedResultPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'Rate this model: ',
+                  Text(
+                    tr("rate"),
                     style: TextStyle(fontSize: 18),
                   ),
                   IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
+                    onPressed: () {
+                      setState(() {
+                        liked = !liked;
+                        if (liked) disliked = false; // Deselect dislike
+                      });
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.white,
+                          content: Text(
+                            liked ? tr("feedback") : tr("apology"),
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: liked ? Colors.green : Colors.grey),
+                          ),
+                          duration: Duration(seconds: 2),
+                        ),
+                      );
+                    },
+                    icon: Icon(
                       Icons.thumb_up,
+                      color: liked ? Colors.blue : Colors.black,
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.thumb_down),
+                    onPressed: () {
+                      setState(() {
+                        disliked = !disliked;
+                        if (disliked) liked = false; // Deselect like
+                      });
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.white,
+                          content: Text(
+                            disliked ? tr("apology") : tr("feedback"),
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: disliked ? Colors.red : Colors.grey),
+                          ),
+                          duration: Duration(seconds: 2),
+                        ),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.thumb_down,
+                      color: disliked ? Colors.blue : Colors.black,
+                    ),
                   ),
                 ],
               ),
